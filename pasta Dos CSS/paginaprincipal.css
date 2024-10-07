@@ -1,0 +1,94 @@
+/* Estilo geral */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f1f3f4;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  border-top: 5px solid #4caf50;
+}
+
+p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+p span.emoji {
+  font-size: 1.5em;
+  margin-right: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.1em;
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:focus {
+  border-color: #2980b9;
+  outline: none;
+  background-color: #eef4fb;
+}
+
+button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Adicionando cores e destaques */
+h1,
+h2,
+p {
+  color: #2c3e50;
+}
+
+p span.option-number {
+  font-weight: bold;
+  color: #2980b9;
+}
+
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 1em;
+  }
+}

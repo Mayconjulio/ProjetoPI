@@ -1,0 +1,89 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 12px;
+  background-color: #fff;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td.valor::before {
+  content: "💰 ";
+}
+
+td.data_gasto::before {
+  content: "📅 ";
+}
+
+td.categoria::before {
+  content: "🏷️ ";
+}
+
+td.descricao::before {
+  content: "📝 ";
+}
+
+td.data_registro::before {
+  content: "⏰ ";
+}
+
+button,
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2980b9;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+a:hover {
+  background-color: #3498db;
+}
+
+a::before {
+  content: "🔙 ";
+}
