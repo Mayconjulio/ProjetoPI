@@ -22,7 +22,8 @@ $datas = $_POST['data'];
 $sql = "INSERT INTO gastos (valor, categoria, descricao, data_gasto) VALUES ('$gastos', '$categoria', '$descricao', '$datas')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Novo registro criado com sucesso";
+    header('Location: pasta Dos HTML/paginaprincipal.html');
+    exit();
 } else {
     echo "Erro: " . $sql . "<br>" . $conn->error;
 }
