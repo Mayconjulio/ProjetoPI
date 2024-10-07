@@ -18,10 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else{
         echo("Digite os numeros correspondente sugeridos ao usuário");
     }
-     
-    
-    
 
-
+ }
+ 
+if (isset($_POST['submit_button'])) {
+    // O botão foi apertado, agora redireciona para outra página
+    header('Location: pasta Dos HTML/paginaprincipal.html');
+    exit(); // Boa prática incluir exit() após redirecionar
+} else {
+    echo "O botão não foi pressionado.";
 }
+
 ?>
