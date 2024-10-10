@@ -41,7 +41,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #0072ff;
@@ -51,12 +52,13 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="email"]:focus {
   border-color: #00c6ff;
   outline: none;
 }
 
-button {
+.button {
   background-color: #0072ff;
   color: white;
   border: none;
@@ -68,7 +70,7 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
+.button:hover {
   background-color: #005bb5;
 }
 
