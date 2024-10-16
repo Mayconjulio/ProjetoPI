@@ -30,13 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha')";
         if ($conn->query($sql) === TRUE) {
             echo "Usuário cadastrado com sucesso!";
-            header('Location:  pasta Dos HTML/login.html');
+            header('Location: pasta Dos HTML/login.html');
         } else {
             echo "Erro: " . $sql . "<br>" . $conn->error;
         }
     }
 }
-
 
 $conn->close();
 ?>
@@ -48,26 +47,78 @@ $conn->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escolha: Login ou Cadastro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, #00c6ff, #0072ff);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-image: linear-gradient(to right, #00c6ff, #0072ff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #00509e;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #e0e0e0;
+        }
+
+        /* Estilo da caixa central */
         .box {
-            color: black;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 30px;
             border-radius: 15px;
             width: 30%;
             text-align: center;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
-            color: #0072ff;
+            color: #00509e;
         }
+
         .btn {
             background-color: #0072ff;
             color: white;
@@ -77,18 +128,142 @@ $conn->close();
             border: none;
             cursor: pointer;
             border-radius: 10px;
+            transition: background-color 0.3s ease;
         }
+
         .btn:hover {
-            background-color: rgb(0, 63, 122);
+            background-color: #00509e;
+        }
+
+        /* Estilo principal */
+        main {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #00509e;
+            color: #fff;
+            padding: 20px 0;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer .social-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #e0e0e0;
+        }
+
+        footer .whatsapp:hover {
+            color: #25D366; /* Cor do WhatsApp */
+        }
+
+        footer .facebook:hover {
+            color: #3b5998; /* Cor do Facebook */
+        }
+
+        /* Instagram com dropdown */
+        .instagram-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .instagram-container .dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .instagram-container .dropdown a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .instagram-container .dropdown a:hover {
+            color: #C13584; /* Cor do Instagram */
+        }
+
+        .instagram-container:hover .dropdown {
+            display: block;
+        }
+
+        .instagram-container:hover a.instagram {
+            color: #C13584; /* Cor do Instagram */
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>Bem-vindo!</h2>
-        <p>Escolha uma das opções abaixo:</p>
-        <a href="pasta Dos HTML/login.html"><button class="btn">Login</button></a>
-        <a href="pasta Dos HTML/cadastro.html"><button class="btn">Cadastro</button></a>
-    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1>LM R. Finacias</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Como Se Registrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+        <div class="box">
+            <h2>Bem-vindo!</h2>
+            <p>Faça login para acessar suas finacias</p>
+            <a href="pasta Dos HTML/login.html"><button class="btn">Login</button></a>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.whatsapp.com" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Instagram com animação ao passar o mouse -->
+                <div class="instagram-container">
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <div class="dropdown">
+                        <a href="https://www.instagram.com/conta1" target="_blank">Conta 1</a>
+                        <a href="https://www.instagram.com/conta2" target="_blank">Conta 2</a>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2024 Nome do Site. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
