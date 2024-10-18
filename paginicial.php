@@ -227,10 +227,10 @@ $conn->close();
             <h1>LM R. Finacias</h1>
             <nav>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Como Se Registrar</a></li>
+                    <li><a href="paginicial.php">Início</a></li>
+                    <li><a href="pasta Dos HTML/sobre.html">Sobre</a></li>
+                    <li><a href="pasta Dos HTML/servicos.html">Serviços</a></li>
+                    <li><a href="pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
                 </ul>
             </nav>
         </div>
