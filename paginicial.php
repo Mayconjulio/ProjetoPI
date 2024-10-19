@@ -41,7 +41,7 @@ $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -190,20 +190,20 @@ $conn->close();
         .instagram-container .dropdown {
             display: none;
             position: absolute;
-            left: 0;
-            top: 40px;
+            left: 40px;
+            top: -40px;
             background-color: #fff;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            padding: 10px;
             border-radius: 5px;
         }
 
         .instagram-container .dropdown a {
             color: #333;
             text-decoration: none;
-            display: block;
-            margin: 5px 0;
             transition: color 0.3s ease;
+            font-size: 10px;
+            font-weight: bolder;
+            
         }
 
         .instagram-container .dropdown a:hover {
@@ -256,8 +256,8 @@ $conn->close();
                 <div class="instagram-container">
                     <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
                     <div class="dropdown">
-                        <a href="https://www.instagram.com/conta1" target="_blank">Conta 1</a>
-                        <a href="https://www.instagram.com/conta2" target="_blank">Conta 2</a>
+                        <a href="https://www.instagram.com/mayconjulio74/" target="_blank">DEV1</a>
+                        <a href="https://www.instagram.com/luisfernandofilhodedeus/" target="_blank">DEV2</a>
                     </div>
                 </div>
             </div>
