@@ -11,7 +11,7 @@ body {
   height: 100vh;
 }
 
-form {
+.container {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -33,52 +33,36 @@ p span.emoji {
   margin-right: 8px;
 }
 
-input[type="text"] {
-  width: 100%;
-  padding: 12px;
-  margin: 15px 0;
-  border: 2px solid #ccc;
-  border-radius: 6px;
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+a.option {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
   font-size: 1.1em;
-  background-color: #f9f9f9;
-}
-
-input[type="text"]:focus {
-  border-color: #2980b9;
-  outline: none;
-  background-color: #eef4fb;
-}
-
-button {
-  width: 100%;
   background-color: #4caf50;
   color: white;
-  border: none;
   padding: 14px;
-  font-size: 1.1em;
-  cursor: pointer;
   border-radius: 6px;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+a.option:hover {
   background-color: #45a049;
 }
 
-/* Adicionando cores e destaques */
-h1,
-h2,
-p {
-  color: #2c3e50;
+a.option span.emoji {
+  font-size: 1.5em;
+  margin-right: 10px;
 }
 
-p span.option-number {
-  font-weight: bold;
-  color: #2980b9;
-}
-
+/* Ajustes para dispositivos móveis */
 @media (max-width: 600px) {
-  form {
+  .container {
     padding: 20px;
     font-size: 1em;
   }
@@ -87,7 +71,7 @@ p span.option-number {
     font-size: 1em;
   }
 
-  button {
+  a.option {
     padding: 10px;
     font-size: 1em;
   }

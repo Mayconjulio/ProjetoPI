@@ -7,20 +7,19 @@
     <link rel="stylesheet" href="../pasta Dos CSS/paginaprincipal.css" />
   </head>
   <body>
-    <form action="../logica.php" method="post">
-      <p>
-        <span class="emoji">💼</span> Escolha uma opção:<br />
-        <span class="emoji">📊</span> (1) Ver gastos anteriores <br />
-        <span class="emoji">📝</span> (2) Registrar um novo gasto <br />
-        <span class="emoji">🚪</span> (3) Sair
-      </p>
-      <input
-        type="text"
-        id="numero"
-        name="numero"
-        placeholder="Digite o número da opção"
-      />
-      <button type="submit"><span class="emoji">🚀</span> Enviar</button>
-    </form>
+    <div class="container">
+      <p><span class="emoji">💼</span> Escolha uma opção:</p>
+      <div class="options">
+        <a href="../pagina1.php" class="option">
+          <span class="emoji">📊</span> Ver gastos anteriores
+        </a>
+        <a href="pagina2.html" class="option">
+          <span class="emoji">📝</span> Registrar um novo gasto
+        </a>
+        <a href="login.html" class="option">
+          <span class="emoji">🚪</span> Sair
+        </a>
+      </div>
+    </div>
   </body>
 </html>
