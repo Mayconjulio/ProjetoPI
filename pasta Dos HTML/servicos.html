@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../pasta Dos CSS/servicos.css" />
     <title>Como cadastra</title>
   </head>
   <body>
@@ -22,9 +23,56 @@
     </header>
 
     <!-- Conteúdo principal da página -->
-    <main>
-      <div class="box"></div>
-    </main>
+    <section id="hero">
+      <div class="container">
+        <h2>Seu futuro financeiro começa aqui</h2>
+        <p>
+          Oferecemos serviços especializados para ajudar você a visualizar
+          melhor suas finanças
+        </p>
+        <a href="#contato" class="cta-button">Fale Conosco</a>
+      </div>
+    </section>
+
+    <section id="servicos" class="container">
+      <h2>Nossos Serviços</h2>
+      <div class="services">
+        <div class="service-item">
+          <h3>Planejamento Financeiro</h3>
+          <p>
+            Auxiliamos você a planejar seu futuro financeiro, com soluções
+            personalizadas.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3>Investimentos</h3>
+          <p>Aconselhamento e estratégias para otimizar seus investimentos.</p>
+        </div>
+        <div class="service-item">
+          <h3>Consultoria Empresarial</h3>
+          <p>
+            Consultoria especializada para negócios que buscam expandir com
+            segurança.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="container">
+      <h2>Contato</h2>
+      <form>
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
 
     <!-- Rodapé -->
     <footer>
