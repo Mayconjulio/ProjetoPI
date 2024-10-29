@@ -1,15 +1,9 @@
 <?php
+// login.php
 session_start();
 
 // Conectar ao banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sistema_login";
-
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+$conn = new mysqli("localhost", "root", "", "sistema_login");
 
 // Verificar conexão
 if ($conn->connect_error) {
@@ -17,30 +11,40 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    // Obter e sanitizar os dados
+    $email = trim($_POST['email']);
     $senha = $_POST['senha'];
 
-    // Buscar o usuário pelo e-mail
-    $sql = "SELECT * FROM usuarios WHERE email='$email'";
-    $result = $conn->query($sql);
+    // Buscar o usuário pelo e-mail usando prepared statements
+    $stmt = $conn->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($result->num_rows > 0) {
-        $usuario = $result->fetch_assoc();
-        
-        // Verificar se a senha está correta
-        if (password_verify($senha, $usuario['senha'])) {
-            $_SESSION['usuario'] = $usuario['nome'];
-            echo "Login bem-sucedido! Bem-vindo, " . $_SESSION['usuario'];
-            header('Location:  pasta Dos HTML/paginaprincipal.html');
+    // Verificar se o e-mail existe
+    if ($stmt->num_rows == 1) {
+        $stmt->bind_result($id, $nome, $senha_hash);
+        $stmt->fetch();
+
+        // Verificar a senha
+        if (password_verify($senha, $senha_hash)) {
+            // Senha correta, iniciar sessão
+            $_SESSION['usuario_id'] = $id;
+            $_SESSION['usuario_nome'] = $nome;
+            header("Location: pasta Dos HTML/paginaprincipal.html");
+            exit();
         } else {
-            echo "<div class='error'>Senha incorreta.</div>";
-            header('Location:  pasta Dos HTML/login.html');
+            // Senha incorreta
+            header("Location: login.php?error=Senha incorreta.");
+            exit();
         }
     } else {
-        echo "<div class='error'>E-mail não encontrado.</div>";
-        header('Location:  pasta Dos HTML/login.html');
+        // E-mail não encontrado
+        header("Location: login.php?error=E-mail não encontrado.");
+        exit();
     }
-    
+
+    $stmt->close();
 }
 
 $conn->close();
