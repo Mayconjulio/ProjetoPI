@@ -1,37 +1,43 @@
-<?php
 // login.php
+<?php
 session_start();
 
 // Conectar ao banco de dados
 $conn = new mysqli("localhost", "root", "", "sistema_login");
 
-// Verificar conexão
+// Verifica a conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obter e sanitizar os dados
+    // Obter e limpar os dados
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
 
-    // Buscar o usuário pelo e-mail usando prepared statements
-    $stmt = $conn->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ?");
+    // Pesquisar o usuário pelo e-mail usando instruções preparadas
+    $stmt = $conn->prepare("SELECT id, nome, senha, admin FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
-    // Verificar se o e-mail existe
+    // Verifica se o e-mail existe
     if ($stmt->num_rows == 1) {
-        $stmt->bind_result($id, $nome, $senha_hash);
+        $stmt->bind_result($id, $nome, $senha_hash, $admin);
         $stmt->fetch();
 
-        // Verificar a senha
+        // Verifica a senha
         if (password_verify($senha, $senha_hash)) {
-            // Senha correta, iniciar sessão
+            // Senha correta, início da sessão
             $_SESSION['usuario_id'] = $id;
             $_SESSION['usuario_nome'] = $nome;
-            header("Location: pasta Dos HTML/paginaprincipal.html");
+
+            // Verifica se é um administrador
+            if ($id == 1) {
+                header("Location: cadastrar.php"); // Página do administrador
+            } else {
+                header("Location: pasta Dos HTML/paginaprincipal.html"); // Página para usuários comuns
+            }
             exit();
         } else {
             // Senha incorreta

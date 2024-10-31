@@ -39,9 +39,39 @@ $nome = $_SESSION['usuario_nome'];
           flex-direction: column;
           align-items: center;
       }
-      nav{
-        text-align: center;
-      }
+      nav {
+    background: #007bff;
+    text-align: center;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px; /* Espaço entre a nav e o conteúdo abaixo */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav span {
+    margin-bottom: 10px; /* Espaço entre o nome do usuário e os links */
+    display: block; /* Faz com que o nome do usuário fique em linha separada */
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 15px; /* Espaço horizontal entre os links */
+    padding: 5px 10px; /* Padding para deixar o link mais "clicável" */
+    border-radius: 5px;
+    background-color: #0056b3; /* Fundo dos links */
+    transition: background-color 0.3s;
+    font-weight: bolder;
+}
+
+nav a:hover {
+    background-color: #003f8a; /* Cor do fundo ao passar o mouse */
+    color: #4caf50;
+}
 
       h1 {
           color: #2c3e50;
@@ -134,33 +164,21 @@ $nome = $_SESSION['usuario_nome'];
           content: "🚀 ";
       }
 
-      a {
-          text-decoration: none;
-          color: #003366;
-          font-weight: bold;
-          transition: color 0.3s ease, background-color 0.3s ease;
-      }
-
-      a:hover {
-          color: #0056b3;
-          background-color: #f0f8ff;
-          padding: 2px 4px;
-          border-radius: 4px;
-      }
   </style>
 </head>
 <body>
 
 <nav>
   <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
-  <br>
-  <a href="pasta Dos HTML/paginaprincipal.html">voltar ao Menu Principal</a>
-  <br>
-  <a href="logout.php">Sair da conta</a>
+  <div>
+  <a href="dashboard.php">Ver gastos adicionados</a>
+  <a href="pasta%20Dos%20HTML/paginaprincipal.html">Voltar ao Menu Principal</a>
+  <a href="logout.php">Sair</a>
+  </div>
 </nav>
 
 <div class="container">
-  <h2>Dashboard</h2>
+  
   <?php
   if (isset($_GET['success'])) {
       echo "<div class='success'>" . htmlspecialchars($_GET['success']) . "</div>";

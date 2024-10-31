@@ -9,8 +9,7 @@
   <body>
     <div class="container">
       <div class="login-box">
-        <h2>Entre na sua Conta</h2>
-        <?php
+      <?php
   if (isset($_GET['error'])) {
       echo "<div class='error'>" . htmlspecialchars($_GET['error']) . "</div>";
   }
@@ -18,6 +17,8 @@
       echo "<div class='success'>" . htmlspecialchars($_GET['success']) . "</div>";
   }
   ?>
+        <h2>Entre na sua Conta</h2>
+        
         <form action="login.php" method="post">
           <div class="input-group">
             <label for="username">Usuário</label>
