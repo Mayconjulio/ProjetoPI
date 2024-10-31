@@ -174,6 +174,19 @@
       .instagram-container:hover a.instagram {
         color: #c13584; /* Cor do Instagram */
       }
+      #link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50; /* Verde */
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      #link:hover {
+        background-color: #45a049; /* Verde mais escuro */
+      }
     </style>
   </head>
   <body>
@@ -194,117 +207,37 @@
 
     <!-- Conteúdo principal da página -->
     <div class="container">
-      <h1>Registro de Usuário</h1>
+      <h1>Envio de Informações para Aprovação</h1>
       <p>
-        Por favor, preencha o formulário abaixo para se registrar e enviar suas
-        informações para a nossa equipe.
+        Por favor, preencha o formulário abaixo e envie para o e-mail:
+        <strong>luis35624141@gmail.com</strong>
+      </p>
+      <p>
+        Siga o exemplo de formatação e preencha os dados corretamente para
+        agilizar o processo:
       </p>
 
-      <form action="../python.py" method="post">
-        <div class="field">
-          <label for="nome">Nome Completo:</label>
-          <input
-            type="text"
-            id="nome"
-            name="nome"
-            required
-            placeholder="Digite seu nome completo"
-          />
-          <small>Exemplo: João da Silva</small>
-        </div>
+      <div class="email-template">
+        <p><strong>Assunto:</strong> Solicitação de Acesso</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>Nome completo: [Seu Nome Completo]</p>
+        <p>Email: [Seu Email]</p>
+        <p>Senha: [Sua Senha]</p>
+        <p>Data de nascimento: [Sua Data de Nascimento]</p>
+        <p>Cidade: [Sua Cidade]</p>
+        <p>Estado: [Seu Estado]</p>
+        <p>Endereço: [Seu Endereço Completo]</p>
+      </div>
 
-        <div class="field">
-          <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="Digite seu email"
-          />
-          <small>Exemplo: joao@email.com</small>
-        </div>
-
-        <div class="field">
-          <label for="senha">Senha:</label>
-          <input
-            type="password"
-            id="senha"
-            name="senha"
-            required
-            placeholder="Crie uma senha segura"
-          />
-          <small
-            >Use pelo menos 8 caracteres, incluindo letras e números.</small
-          >
-        </div>
-
-        <div class="field">
-          <label for="data_nasc">Data de Nascimento:</label>
-          <input type="date" id="data_nasc" name="data_nasc" required />
-          <small>Selecione sua data de nascimento.</small>
-        </div>
-
-        <div class="field">
-          <label for="cidade">Cidade:</label>
-          <input
-            type="text"
-            id="cidade"
-            name="cidade"
-            required
-            placeholder="Digite sua cidade"
-          />
-          <small>Exemplo: São Paulo</small>
-        </div>
-
-        <div class="field">
-          <label for="estado">Estado:</label>
-          <select id="estado" name="estado" required>
-            <option value="">Selecione seu estado</option>
-            <option value="AC">Acre</option>
-            <option value="AL">Alagoas</option>
-            <option value="AM">Amazonas</option>
-            <option value="BA">Bahia</option>
-            <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espírito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="MS">Mato Grosso do Sul</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option>
-            <option value="PR">Paraná</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="RN">Rio Grande do Norte</option>
-            <option value="RS">Rio Grande do Sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option>
-            <option value="SE">Sergipe</option>
-            <option value="SP">São Paulo</option>
-            <option value="TO">Tocantins</option>
-          </select>
-          <small>Selecione o estado onde você reside.</small>
-        </div>
-
-        <div class="field">
-          <label for="endereco">Endereço:</label>
-          <input
-            type="text"
-            id="endereco"
-            name="endereco"
-            required
-            placeholder="Digite seu endereço completo"
-          />
-          <small>Exemplo: Rua das Flores, 123, Apto 45</small>
-        </div>
-
-        <button type="submit">Registrar</button>
-      </form>
+      <p>
+        Após o envio, você receberá um e-mail de retorno em alguns minutos para
+        confirmar se foi aprovado para realizar o login no site.
+      </p>
+      <p>
+        <a href="https://www.youtube.com/watch?v=hkvcRW_rUGA" id="link"
+          >Tutorial de como Enviar o email!</a
+        >
+      </p>
     </div>
     <!-- Rodapé -->
     <footer>
