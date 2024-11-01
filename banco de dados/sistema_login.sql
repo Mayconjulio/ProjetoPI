@@ -3,19 +3,23 @@ CREATE DATABASE sistema_login;
 
 USE sistema_login;
 
-CREATE TABLE `gastos` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `gasto` decimal(10,2) NOT NULL,
-  `data_gasto` date NOT NULL,
-  `preco` decimal(10,2) NOT NULL,
-  `categoria` varchar(50) NOT NULL,
-  `descricao` text DEFAULT NULL
-) ;
+-- Criar tabela gastos
+CREATE TABLE gastos (
+  id INT(11) NOT NULL,
+  user_id INT(11) NOT NULL,
+  gasto DECIMAL(10,2) NOT NULL,
+  data_gasto DATE NOT NULL,
+  preco DECIMAL(10,2) NOT NULL,
+  categoria VARCHAR(50) NOT NULL,
+  descricao TEXT DEFAULT NULL
+);
 
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `senha` varchar(255) NOT NULL
-) 
+-- Criar tabela usuarios
+CREATE TABLE usuarios (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  senha VARCHAR(255) NOT NULL,
+  admin TINYINT(1) DEFAULT 0
+);
+
