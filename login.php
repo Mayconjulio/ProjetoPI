@@ -41,12 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             // Senha incorreta
-            header("Location: login.php?error=Senha incorreta.");
+            header("Location: loginN.php?error=Senha incorreta.");
             exit();
         }
     } else {
         // E-mail não encontrado
-        header("Location: login.php?error=E-mail não encontrado.");
+        header("Location: loginN.php?error=E-mail não encontrado.");
         exit();
     }
 

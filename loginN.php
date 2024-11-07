@@ -40,7 +40,7 @@
 
           <input class="button" type="submit" value="Entrar" />
         </form>
-        <p class="forgot-password"><a href="">Esqueceu sua senha?</a></p>
+        <p class="forgot-password"><a href="pasta%20Dos%20HTML/servicos.html">Esqueceu sua senha?</a></p>
         <a href="pasta Dos HTML/inicio.html" class="botao-voltar">Voltar</a>
       </div>
     </div>

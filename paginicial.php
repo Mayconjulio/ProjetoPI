@@ -241,7 +241,7 @@ $conn->close();
         <div class="box">
             <h2>Bem-vindo!</h2>
             <p>Faça login para acessar suas finacias</p>
-            <a href="pasta Dos HTML/login.html"><button class="btn">Login</button></a>
+            <a href="loginN.php"><button class="btn">Login</button></a>
         </div>
     </main>
 

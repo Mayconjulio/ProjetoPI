@@ -77,6 +77,21 @@
         #submit:hover{
             background-image: linear-gradient(to right,rgb(33, 148, 255), rgb(0, 63, 122));
         }
+        #VolTar{
+            position: relative;
+            background-color: rgb(33, 148, 255);
+            color: #ffffff;
+            padding: 10px;
+            left: 4px;
+            top: -15px;
+            border: 1px solid;
+            border-radius: 5px ;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #VolTar:hover{
+            background-image: linear-gradient(to right,rgb(33, 148, 255), rgb(0, 63, 122));
+        }
     </style>
 </head>
 <body>
@@ -127,6 +142,7 @@
                     <label for="endereco" class="labelInput">Endereço</label>
                 </div>
                 <br><br> 
+                <a href="paginicial.php" id="VolTar">Voltar para pagina Principal</a>
                 <input id="submit" type="submit" value="Cadastrar">
             </fieldset>
         </form>
