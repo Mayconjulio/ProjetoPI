@@ -224,7 +224,7 @@ $conn->close();
     <!-- Cabeçalho -->
     <header>
         <div class="container">
-            <h1>LM R. Finacias</h1>
+            <h1>LM R. Finanças</h1>
             <nav>
                 <ul>
                     <li><a href="paginicial.php">Início</a></li>
@@ -240,7 +240,7 @@ $conn->close();
     <main>
         <div class="box">
             <h2>Bem-vindo!</h2>
-            <p>Faça login para acessar suas finacias</p>
+            <p>Faça login para acessar suas Finanças</p>
             <a href="loginN.php"><button class="btn">Login</button></a>
         </div>
     </main>
