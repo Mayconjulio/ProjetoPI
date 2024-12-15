@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="coisas.sql" />
+    <link rel="stylesheet" href="index.php" />
+    <!-- Arquivo CSS externo -->
+  </head>
+  <body>
+    <h1>Usuários</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+      </tr>
+
+      <?php
+        // Incluir o arquivo de conexão
+        include 'conexao.php';
+
+        // Selecionar dados da tabela
+        $sql = "SELECT id, nome, email FROM usuarios";
+        $result = $conn->query($sql); if ($result->num_rows > 0) { // Exibir
+      dados em cada linha da tabela while($row = $result->fetch_assoc()) { echo
+      "
+      <tr>
+        <td>" . $row["id"]. "</td>
+        <td>" . $row["nome"]. "</td>
+        <td>" . $row["email"]. "</td>
+      </tr>
+      "; } } else { echo "
+      <tr>
+        <td colspan="3">Nenhum usuário encontrado</td>
+      </tr>
+      "; } // Fechar a conexão $conn->close(); ?>
+    </table>
+  </body>
+</html>
