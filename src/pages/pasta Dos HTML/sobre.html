@@ -2,13 +2,9 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LM R. Finaças</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="../../styles/pasta Dos CSS/sobre.css" />
+    <title>Como cadastra</title>
     <style>
       * {
         margin: 0;
@@ -151,19 +147,20 @@
       .instagram-container .dropdown {
         display: none;
         position: absolute;
-        left: 40px;
-        top: -40px;
+        left: 0;
+        top: 40px;
         background-color: #fff;
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px;
         border-radius: 5px;
       }
 
       .instagram-container .dropdown a {
         color: #333;
         text-decoration: none;
+        display: block;
+        margin: 5px 0;
         transition: color 0.3s ease;
-        font-size: 10px;
-        font-weight: bolder;
       }
 
       .instagram-container .dropdown a:hover {
@@ -183,27 +180,67 @@
     <!-- Cabeçalho -->
     <header>
       <div class="container">
-        <h1>LM R. Finaças</h1>
+        <h1>LM R. Finanças</h1>
         <nav>
           <ul>
-            <li><a href="inicio.html">Início</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="servicos.html">Serviços</a></li>
-            <li><a href="sComocadastra.html">Como Se Registrar</a></li>
+            <li><a href="../../../public/paginicial.php">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li>
+              <a href="../../pages/pasta Dos HTML/servicos.html">Serviços</a>
+            </li>
+            <li>
+              <a href="../../pages/pasta Dos HTML/sComocadastra.html"
+                >Como Se Registrar</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
     </header>
 
     <!-- Conteúdo principal da página -->
-    <main>
-      <div class="box">
-        <h2>Bem-vindo!</h2>
-        <p>Faça login para acessar suas finacias</p>
-        <a href="../loginN.php"><button class="btn">Login</button></a>
-      </div>
-    </main>
+    <section id="sobre-projeto">
+      <h2>Sobre o Projeto</h2>
+      <p>
+        Este projeto tem como objetivo criar uma aplicação que auxilia no
+        gerenciamento financeiro pessoal. A aplicação permite o controle de
+        receitas e despesas, criando relatórios detalhados e gráficos que ajudam
+        o usuário a entender seu fluxo de caixa.
+      </p>
+      <p>
+        A tecnologia usada no desenvolvimento inclui linguagens como HTML, CSS,
+        PHP e JavaScript, com o suporte de banco de dados MySQL para armazenar
+        as informações financeiras.
+      </p>
+    </section>
 
+    <!-- Seção sobre os Alunos -->
+    <section id="sobre-alunos">
+      <h2>Sobre os Alunos</h2>
+      <p>
+        O projeto foi desenvolvido por dois alunos do 2º Módulo do curso Técnico
+        de Desenvolvimento de Sistemas (TDS). Durante a criação desta aplicação,
+        os alunos tiveram a oportunidade de aplicar os conhecimentos adquiridos
+        nas disciplinas de programação, desenvolvimento web e banco de dados,
+        consolidando seu aprendizado em um projeto prático.
+      </p>
+      <p>
+        Esta experiência permitiu que ambos evoluíssem tanto tecnicamente quanto
+        na capacidade de trabalhar em equipe, dividindo responsabilidades e
+        colaborando para resolver problemas e implementar funcionalidades
+        essenciais para o bom funcionamento da aplicação.
+      </p>
+    </section>
+
+    <!-- Seção de Link para o Projeto -->
+    <section id="link-projeto">
+      <h2>Acompanhe o Projeto</h2>
+      <p>
+        Para saber mais detalhes sobre o projeto e acompanhar o desenvolvimento,
+        acesse o link abaixo:
+      </p>
+      <a href="../loginN.php">Visitar o Projeto</a>
+    </section>
     <!-- Rodapé -->
     <footer>
       <div class="container">
@@ -219,13 +256,11 @@
           <div class="instagram-container">
             <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
             <div class="dropdown">
-              <a href="https://www.instagram.com/mayconjulio74/" target="_blank"
-                >DEV1</a
+              <a href="https://www.instagram.com/conta1" target="_blank"
+                >Conta 1</a
               >
-              <a
-                href="https://www.instagram.com/luisfernandofilhodedeus/"
-                target="_blank"
-                >DEV2</a
+              <a href="https://www.instagram.com/conta2" target="_blank"
+                >Conta 2</a
               >
             </div>
           </div>

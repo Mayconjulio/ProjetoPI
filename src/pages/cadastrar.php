@@ -142,7 +142,7 @@
                     <label for="endereco" class="labelInput">Endereço</label>
                 </div>
                 <br><br> 
-                <a href="paginicial.php" id="VolTar">Voltar para pagina Principal</a>
+                <a href="../../public/paginicial.php" id="VolTar">Voltar para pagina Principal</a>
                 <input id="submit" type="submit" value="Cadastrar">
             </fieldset>
         </form>

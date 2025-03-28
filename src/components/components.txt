@@ -1,0 +1,2 @@
+# Componentes reutilizáveis (React, Vue, etc.)
+# Código-fonte do projeto (se aplicável)

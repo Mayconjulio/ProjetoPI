@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../pasta Dos CSS/sobre.css" />
+    <link
+      rel="stylesheet"
+      href="../../styles/pasta Dos CSS/sComocadastrar.css"
+    />
     <title>Como cadastra</title>
     <style>
       * {
@@ -21,7 +24,7 @@
         color: #333;
       }
 
-      .container {
+      .containerr {
         width: 80%;
         margin: 0 auto;
       }
@@ -174,67 +177,73 @@
       .instagram-container:hover a.instagram {
         color: #c13584; /* Cor do Instagram */
       }
+      #link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50; /* Verde */
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+      #link:hover {
+        background-color: #45a049; /* Verde mais escuro */
+      }
     </style>
   </head>
   <body>
     <!-- Cabeçalho -->
     <header>
-      <div class="container">
+      <div class="containerr">
         <h1>LM R. Finanças</h1>
         <nav>
           <ul>
-            <li><a href="../paginicial.php">Início</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="servicos.html">Serviços</a></li>
-            <li><a href="sComocadastra.html">Como Se Registrar</a></li>
+            <li><a href="../../../public/paginicial.php">Início</a></li>
+            <li><a href="../../pages/pasta Dos HTML/sobre.html">Sobre</a></li>
+            <li>
+              <a href="../../pages/pasta Dos HTML/servicos.html">Serviços</a>
+            </li>
+            <li><a href="#">Como Se Registrar</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <!-- Conteúdo principal da página -->
-    <section id="sobre-projeto">
-      <h2>Sobre o Projeto</h2>
+    <div class="container">
+      <h1>Envio de Informações para Aprovação</h1>
       <p>
-        Este projeto tem como objetivo criar uma aplicação que auxilia no
-        gerenciamento financeiro pessoal. A aplicação permite o controle de
-        receitas e despesas, criando relatórios detalhados e gráficos que ajudam
-        o usuário a entender seu fluxo de caixa.
+        Por favor, preencha o formulário abaixo e envie para o e-mail:
+        <strong>luis35624141@gmail.com</strong>
       </p>
       <p>
-        A tecnologia usada no desenvolvimento inclui linguagens como HTML, CSS,
-        PHP e JavaScript, com o suporte de banco de dados MySQL para armazenar
-        as informações financeiras.
+        Siga o exemplo de formatação e preencha os dados corretamente para
+        agilizar o processo:
       </p>
-    </section>
 
-    <!-- Seção sobre os Alunos -->
-    <section id="sobre-alunos">
-      <h2>Sobre os Alunos</h2>
-      <p>
-        O projeto foi desenvolvido por dois alunos do 2º Módulo do curso Técnico
-        de Desenvolvimento de Sistemas (TDS). Durante a criação desta aplicação,
-        os alunos tiveram a oportunidade de aplicar os conhecimentos adquiridos
-        nas disciplinas de programação, desenvolvimento web e banco de dados,
-        consolidando seu aprendizado em um projeto prático.
-      </p>
-      <p>
-        Esta experiência permitiu que ambos evoluíssem tanto tecnicamente quanto
-        na capacidade de trabalhar em equipe, dividindo responsabilidades e
-        colaborando para resolver problemas e implementar funcionalidades
-        essenciais para o bom funcionamento da aplicação.
-      </p>
-    </section>
+      <div class="email-template">
+        <p><strong>Assunto:</strong> Solicitação de Acesso</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>Nome completo: [Seu Nome Completo]</p>
+        <p>Email: [Seu Email]</p>
+        <p>Senha: [Sua Senha]</p>
+        <p>Data de nascimento: [Sua Data de Nascimento]</p>
+        <p>Cidade: [Sua Cidade]</p>
+        <p>Estado: [Seu Estado]</p>
+        <p>Endereço: [Seu Endereço Completo]</p>
+      </div>
 
-    <!-- Seção de Link para o Projeto -->
-    <section id="link-projeto">
-      <h2>Acompanhe o Projeto</h2>
       <p>
-        Para saber mais detalhes sobre o projeto e acompanhar o desenvolvimento,
-        acesse o link abaixo:
+        Após o envio, você receberá um e-mail de retorno em alguns minutos para
+        confirmar se foi aprovado para realizar o login no site.
       </p>
-      <a href="../loginN.php">Visitar o Projeto</a>
-    </section>
+      <p>
+        <a href="https://www.youtube.com/watch?v=hkvcRW_rUGA" id="link"
+          >Tutorial de como Enviar o email!</a
+        >
+      </p>
+    </div>
     <!-- Rodapé -->
     <footer>
       <div class="container">

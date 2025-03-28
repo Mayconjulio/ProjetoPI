@@ -228,9 +228,9 @@ $conn->close();
             <nav>
                 <ul>
                     <li><a href="paginicial.php">Início</a></li>
-                    <li><a href="pasta Dos HTML/sobre.html">Sobre</a></li>
-                    <li><a href="pasta Dos HTML/servicos.html">Serviços</a></li>
-                    <li><a href="pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
+                    <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
+                    <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
+                    <li><a href="../src/pages/pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
                 </ul>
             </nav>
         </div>
@@ -241,7 +241,7 @@ $conn->close();
         <div class="box">
             <h2>Bem-vindo!</h2>
             <p>Faça login para acessar suas Finanças</p>
-            <a href="loginN.php"><button class="btn">Login</button></a>
+            <a href="../src/pages/loginN.php"><button class="btn">Login</button></a>
         </div>
     </main>
 

@@ -2,9 +2,13 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../pasta Dos CSS/sComocadastrar.css" />
-    <title>Como cadastra</title>
+    <title>LM R. Finaças</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
       * {
         margin: 0;
@@ -21,7 +25,7 @@
         color: #333;
       }
 
-      .containerr {
+      .container {
         width: 80%;
         margin: 0 auto;
       }
@@ -147,20 +151,19 @@
       .instagram-container .dropdown {
         display: none;
         position: absolute;
-        left: 0;
-        top: 40px;
+        left: 40px;
+        top: -40px;
         background-color: #fff;
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        padding: 10px;
         border-radius: 5px;
       }
 
       .instagram-container .dropdown a {
         color: #333;
         text-decoration: none;
-        display: block;
-        margin: 5px 0;
         transition: color 0.3s ease;
+        font-size: 10px;
+        font-weight: bolder;
       }
 
       .instagram-container .dropdown a:hover {
@@ -174,71 +177,33 @@
       .instagram-container:hover a.instagram {
         color: #c13584; /* Cor do Instagram */
       }
-      #link {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #4caf50; /* Verde */
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      #link:hover {
-        background-color: #45a049; /* Verde mais escuro */
-      }
     </style>
   </head>
   <body>
     <!-- Cabeçalho -->
     <header>
-      <div class="containerr">
+      <div class="container">
         <h1>LM R. Finanças</h1>
         <nav>
           <ul>
-            <li><a href="../paginicial.php">Início</a></li>
+            <li><a href="inicio.html">Início</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="servicos.html">Serviços</a></li>
-            <li><a href="#">Como Se Registrar</a></li>
+            <li><a href="sComocadastra.html">Como Se Registrar</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <!-- Conteúdo principal da página -->
-    <div class="container">
-      <h1>Envio de Informações para Aprovação</h1>
-      <p>
-        Por favor, preencha o formulário abaixo e envie para o e-mail:
-        <strong>luis35624141@gmail.com</strong>
-      </p>
-      <p>
-        Siga o exemplo de formatação e preencha os dados corretamente para
-        agilizar o processo:
-      </p>
-
-      <div class="email-template">
-        <p><strong>Assunto:</strong> Solicitação de Acesso</p>
-        <p><strong>Mensagem:</strong></p>
-        <p>Nome completo: [Seu Nome Completo]</p>
-        <p>Email: [Seu Email]</p>
-        <p>Senha: [Sua Senha]</p>
-        <p>Data de nascimento: [Sua Data de Nascimento]</p>
-        <p>Cidade: [Sua Cidade]</p>
-        <p>Estado: [Seu Estado]</p>
-        <p>Endereço: [Seu Endereço Completo]</p>
+    <main>
+      <div class="box">
+        <h2>Bem-vindo!</h2>
+        <p>Faça login para acessar suas finacias</p>
+        <a href="../loginN.php"><button class="btn">Login</button></a>
       </div>
+    </main>
 
-      <p>
-        Após o envio, você receberá um e-mail de retorno em alguns minutos para
-        confirmar se foi aprovado para realizar o login no site.
-      </p>
-      <p>
-        <a href="https://www.youtube.com/watch?v=hkvcRW_rUGA" id="link"
-          >Tutorial de como Enviar o email!</a
-        >
-      </p>
-    </div>
     <!-- Rodapé -->
     <footer>
       <div class="container">
@@ -254,11 +219,13 @@
           <div class="instagram-container">
             <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
             <div class="dropdown">
-              <a href="https://www.instagram.com/conta1" target="_blank"
-                >Conta 1</a
+              <a href="https://www.instagram.com/mayconjulio74/" target="_blank"
+                >DEV1</a
               >
-              <a href="https://www.instagram.com/conta2" target="_blank"
-                >Conta 2</a
+              <a
+                href="https://www.instagram.com/luisfernandofilhodedeus/"
+                target="_blank"
+                >DEV2</a
               >
             </div>
           </div>
