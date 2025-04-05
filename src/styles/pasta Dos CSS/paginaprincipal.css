@@ -3,12 +3,14 @@ body {
   font-family: "Arial", sans-serif;
   background-color: #f1f3f4;
   color: #2c3e50;
-  margin: 0;
   padding: 0;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  margin: 0; 
+  position: relative;
 }
 
 .container {
@@ -19,6 +21,11 @@ body {
   max-width: 450px;
   width: 100%;
   border-top: 5px solid #4caf50;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 p {
@@ -76,3 +83,112 @@ a.option span.emoji {
     font-size: 1em;
   }
 }
+
+/* CHATBOT */
+/* A FAZER: Eu fiz tudo usando absolute, mas pelo amor de Deus, temos que 
+tirar isso no futuro, pq QUEBRA a responsividade, mas eu teria que mudar
+o código todo começando do BODY, e ja são 00:35 e eu to morto de fome */
+
+.ChatWrapper {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  z-index: 9999; /* só pra garantir que fique acima */
+}
+
+/* Chat fechado/aberto */
+.chatExpandido {
+  width: 20rem;
+  height: 0;
+  background-color: white;
+  overflow: hidden;
+  transition: height 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Cabeçalho fixo */
+.ChatIA {
+  background-color: black;
+  height: 5rem;
+  width: 20rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Estilo do botão */
+.AtivarDesativarChat {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+/* Mensagens */
+.chat-box {
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #e4e6eb;
+  color: black;
+  border-bottom-left-radius: 0;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+input[type="text"] { /* é o lugar que você escreve a mensagem po */
+  flex-grow: 1;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+button[type="submit"] { /* botão de enviar a mensagem :) */
+  border: none;
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
