@@ -11,7 +11,6 @@
   </head>
 
   <body>
-
     <div class="container">
       <p><span class="emoji">💼</span> Escolha uma opção:</p>
       <div class="options">
@@ -32,17 +31,34 @@
     <div class="ChatWrapper">
       <div class="chatExpandido">
         <div class="chat-box" id="chatbox"></div>
-  
+
         <form id="chat-form">
-          <input type="text" id="messageInput" placeholder="Digite sua mensagem..." required />
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Digite sua mensagem..."
+            required
+          />
           <button type="submit">Enviar</button>
         </form>
       </div>
-  
+
       <div class="ChatIA">
-        <button class="AtivarDesativarChat"></button> <!-- botão de maximizar e minimizar o menu -->
+        <h1 class="NomeDoBot">BotInvest</h1>
+        <button class="AtivarDesativarChat"></button>
+        <!-- botão de maximizar e minimizar o menu -->
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const chatToggle = document.querySelector(".ChatIA");
+        const chatBox = document.querySelector(".chatExpandido");
+
+        chatToggle.addEventListener("click", () => {
+          chatBox.classList.toggle("ativo");
+        });
+      });
+    </script>
 
     <script src="../../JS/FunçõesDoChatBot.js"></script>
   </body>
