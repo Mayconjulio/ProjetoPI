@@ -28,7 +28,8 @@ form.addEventListener("submit", async (e) => {
     const res = await fetch("http://localhost:3000/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, sessionId: "default" }), // pode usar um UUID depois
+
     });
 
     // Converte a resposta para JSON

@@ -1,65 +1,71 @@
 // Importação dos módulos necessários
-import express from "express"; // Framework web para lidar com rotas e requisições
-import cors from "cors"; // Middleware para permitir requisições de outras origens (Cross-Origin Resource Sharing)
-import bodyParser from "body-parser"; // Middleware para interpretar dados JSON no corpo das requisições
-import { OpenAI } from "openai/index.mjs"; // SDK da OpenAI para comunicação com a API
-import dotenv from "dotenv"; // Carrega variáveis de ambiente a partir de um arquivo .env
-import path from "path"; // Utilitário do Node.js para manipulação de caminhos de arquivos
-import { fileURLToPath } from "url"; // Necessário para trabalhar com __dirname em ES Modules
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import { OpenAI } from "openai/index.mjs";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+import fs from "fs";
 
-// Converte o caminho do arquivo atual para uma string e obtém o diretório onde ele está localizado
+// Para usar __dirname com ESModules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Carrega o arquivo .env a partir do diretório atual do arquivo
+// Carrega variáveis de ambiente do .env
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-// É um debug para termos certeza que a chave ta carregada, isso deu uma dor de cabeça que você não faz ideia cara
-console.log("🔑 OPENAI KEY:", process.env.OPENAI_API_KEY);
-
-// Inicialização do servidor Express
+// Inicializa o servidor
 const app = express();
-const port = 3000; // Nossa porta :)
+const port = 3000;
 
-// Middlewares que permitem o funcionamento do servidor:
-app.use(cors()); // Permite que o front-end (em outro domínio ou porta) acesse o servidor
-app.use(bodyParser.json()); // Permite que o servidor entenda requisições com JSON no corpo
+app.use(cors());
+app.use(bodyParser.json());
 
-// Verifica se a variável OPENAI_API_KEY foi carregada corretamente, meio que outro DEBUG pra chave
+// Verifica se a chave da OpenAI está presente
 if (!process.env.OPENAI_API_KEY) {
     console.error("❌ ERRO: A variável OPENAI_API_KEY não está definida no .env");
-    process.exit(1); // Encerra o servidor, já que sem a chave a API não pode funcionar
+    process.exit(1);
 }
 
-// Inicializa a instância da OpenAI com a chave de API
+// Inicializa a instância da OpenAI
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Rota POST que recebe mensagens do front-end e retorna a resposta da IA
+// Lê o prompt do arquivo
+const systemPrompt = fs.readFileSync("./backend/prompt.txt", "utf-8");
+
+// Objeto para armazenar o histórico das sessões
+const chatHistory = {};
+
+// Rota principal do chat
 app.post("/chat", async (req, res) => {
-    const { message } = req.body; // Extrai a mensagem do corpo da requisição
+    const { message, sessionId = "default" } = req.body;
 
     if (!message) {
-        return res.status(400).json({ error: "A mensagem não pode estar vazia" }); // Validação fácil fácil
+        return res.status(400).json({ error: "A mensagem não pode estar vazia" });
     }
+
+    // Se ainda não tiver histórico dessa sessão, inicia um array
+    if (!chatHistory[sessionId]) {
+        chatHistory[sessionId] = [];
+    }
+
+    // Adiciona a mensagem do usuário ao histórico
+    chatHistory[sessionId].push({ role: "user", content: message });
 
     console.log("🔹 Pergunta recebida:", message);
 
     try {
-        // Envia a mensagem para a OpenAI usando o modelo gpt-4o
         const response = await openai.chat.completions.create({
-            model: "gpt-4o", // Escolhe o modelo
+            model: "gpt-4o",
             messages: [
-                { 
-                    role: "system", // Em "Content" fica o prompt do bot, basicamente a forma que ele vai agir é essa ↓↓↓↓↓
-                    content: "Você é um assistente financeiro que responde em português. Dê dicas sobre finanças pessoais, investimentos e controle de gastos. Apenas responda dúvidas sobre finanças, não fale nada fora disso. E fale como um humano" 
-                },
-                { role: "user", content: message }
+                { role: "system", content: systemPrompt },
+                ...chatHistory[sessionId] // Envia o histórico completo (sem repetir o systemPrompt)
             ],
         });
 
-        // Verifica se houve retorno válido
         if (!response.choices || response.choices.length === 0) {
             throw new Error("Resposta vazia da API");
         }
@@ -67,14 +73,17 @@ app.post("/chat", async (req, res) => {
         const respostaBot = response.choices[0].message.content;
         console.log("✅ Resposta da API:", respostaBot);
 
-        res.json({ response: respostaBot }); // Retorna a resposta ao front-end
+        // Adiciona a resposta do bot ao histórico
+        chatHistory[sessionId].push({ role: "assistant", content: respostaBot });
+
+        res.json({ response: respostaBot });
     } catch (error) {
         console.error("❌ Erro na API:", error);
-        res.status(500).json({ error: "Erro ao obter resposta da API" }); // Erro genérico
+        res.status(500).json({ error: "Erro ao obter resposta da API" });
     }
 });
 
-// Inicia o servidor na porta 3000
+// Inicia o servidor
 app.listen(port, () => {
     console.log(`🚀 Assistente Financeiro rodando em http://localhost:${port}`);
 });

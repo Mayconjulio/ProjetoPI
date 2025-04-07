@@ -91,114 +91,102 @@ o código todo começando do BODY, e ja são 00:35 e eu to morto de fome */
 
 .ChatWrapper {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 350px;
-  font-family: "Poppins", sans-serif;
-  z-index: 9999;
-}
-
-.chatExpandido {
-  display: none; /* Escondido inicialmente */
-  flex-direction: column;
-  height: 400px;
-  max-height: 400px;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-.chatExpandido.ativo {
+  bottom: 1rem;
+  right: 1rem;
   display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  z-index: 9999; /* só pra garantir que fique acima */
 }
 
+/* Chat fechado/aberto */
+.chatExpandido {
+  width: 20rem;
+  height: 0;
+  background-color: white;
+  overflow: hidden;
+  transition: height 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Cabeçalho fixo */
+.ChatIA {
+  background-color: #142675;;
+  height: 5rem;
+  width: 20rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Estilo do botão */
+.AtivarDesativarChat {
+  background: none;
+  color: #ffffff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+/* Mensagens */
 .chat-box {
-  flex: 1;
-  padding: 10px;
+  flex-grow: 1;
+  padding: 1rem;
   overflow-y: auto;
-  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .message {
-  max-width: 70%;
-  padding: 10px 14px;
-  border-radius: 15px;
-  font-size: 14px;
-  line-height: 1.4;
-  word-wrap: break-word;
-}
-
-.message.user {
-  align-self: flex-end;
-  background-color: #d1e7dd;
-  color: #0f5132;
-  border-top-right-radius: 0;
-}
-
-.message.bot {
-  align-self: flex-start;
-  background-color: #e2e3e5;
-  color: #41464b;
-  border-top-left-radius: 0;
-}
-
-#chat-form {
-  display: flex;
-  border-top: 1px solid #ccc;
-  padding: 8px;
-  background-color: #f9f9f9;
-}
-
-#messageInput {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
+  padding: 0.7rem 1rem;
   border-radius: 20px;
-  font-size: 14px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #e4e6eb;
+  color: black;
+  border-bottom-left-radius: 0;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+input[type="text"] { /* é o lugar que você escreve a mensagem po */
+  flex-grow: 1;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
   outline: none;
 }
 
-#chat-form button {
-  padding: 8px 16px;
-  margin-left: 8px;
+button[type="submit"] { /* botão de enviar a mensagem :) */
   border: none;
-  border-radius: 20px;
-  background-color: #1f3b99;
+  background-color: #007bff;
   color: white;
+  padding: 1rem;
+  cursor: pointer;
   font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-#chat-form button:hover {
-  background-color: #142675;
-}
-
-.ChatIA {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #1f3b99;
-  color: white;
-  padding: 10px 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.NomeDoBot {
-  font-size: 1.2rem;
-  margin: 0;
-}
-
-.AtivarDesativarChat {
-  background: transparent;
-  border: none;
-  width: 24px;
-  height: 24px;
-  background-image: url("seu-icone-aqui.svg"); /* ícone opcional */
-  background-size: cover;
-  cursor: pointer;
 }
