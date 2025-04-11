@@ -21,14 +21,14 @@ $nome = $_SESSION['usuario_nome'];
 
 // Adicionar gasto ao banco de dados (se o formulário foi enviado)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $gasto = $_POST['gasto'];
+    $Produto = $_POST['Produto'];
     $data_gasto = $_POST['data_gasto'];
     $preco = $_POST['preco'];
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
 
-    $stmt = $conn->prepare("INSERT INTO gastos (user_id, gasto, data_gasto, preco, categoria, descricao) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issdss", $user_id, $gasto, $data_gasto, $preco, $categoria, $descricao);
+    $stmt = $conn->prepare("INSERT INTO gastos (user_id, Produto, data_gasto, preco, categoria, descricao) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("issdss", $user_id, $Produto, $data_gasto, $preco, $categoria, $descricao);
 
     if ($stmt->execute()) {
         header("Location: adicionar_gasto.php?success=Gasto adicionado com sucesso!");
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adicionar Gasto</title>
+  <title>Novo Registro Financeiro</title>
   
   <style>
       body {
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <nav>
   <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
   <div>
-    <a href="ver_gastos.php">Ver Gastos</a>
+    <a href="ver_gastos.php">Histórico Financeiro</a>
     <a href="pasta Dos HTML/paginaprincipal.html">Menu Principal</a>
     <a href="logout.php">Sair</a>
   </div>
@@ -182,20 +182,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   }
   ?>
 
-  <h3>Adicionar Novo Gasto</h3>
+  <h3>Adicionar ao Controle Financeiro</h3>
   <form action="adicionar_gasto.php" method="post">
-    <label for="gasto">Gasto:</label>
-    <input type="text" step="0.01" name="gasto" id="gasto" required>
+    <label for="gasto">Nome do Produto:</label>
+    <input type="text" step="0.01" name="Produto" id="Produto" required>
 
     <label for="data_gasto">Data do Gasto:</label>
     <input type="date" name="data_gasto" id="data_gasto" required>
 
-    <label for="preco">Preço:</label>
+    <label for="preco">Preço do Produto:</label>
     <input type="number" step="0.01" name="preco" id="preco" required>
 
     <label for="categoria">Categoria:</label>
     <select name="categoria" id="categoria" required>
-      <option value="">Selecione</option>
+        <option value=""></option>
       <option value="Alimentação">Alimentação</option>
       <option value="Transporte">Transporte</option>
       <option value="Lazer">Lazer</option>

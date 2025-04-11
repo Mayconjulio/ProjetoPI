@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `gastos` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `gasto` varchar(255) NOT NULL,
+  `Produto` varchar(255) NOT NULL,
   `data_gasto` date NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `categoria` varchar(255) NOT NULL,

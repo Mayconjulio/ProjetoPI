@@ -39,9 +39,9 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$gastos = []; // <- Novo array
+$Produto = []; // <- Novo array
 while ($row = $result->fetch_assoc()) {
-    $gastos[] = $row;
+    $Produto[] = $row;
 }
 
     
@@ -51,12 +51,12 @@ $dados_stmt = $conn->prepare($dados_sql);
 $dados_stmt->bind_param("i", $user_id);
 $dados_stmt->execute();
 $dados_result = $dados_stmt->get_result();
-
+$gastos;
 $datas = [];
 $valores = [];
 
-foreach ($gastos as $row) {
-    $label = $row['gasto'] . ' (' . date('d/m/Y', strtotime($row['data_gasto'])) . ')';
+foreach ($Produto as $row) {
+    $label = $row['Produto'] . ' (' . date('d/m/Y', strtotime($row['data_gasto'])) . ')';
     $datas[] = $label;
     $valores[] = $row['preco'];
 }
@@ -86,7 +86,7 @@ while ($row = $resultPizza->fetch_assoc()) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ver Gastos</title>
+  <title>Histórico Financeiro</title>
   <style>
             body {
           font-family: Arial, sans-serif;
@@ -234,21 +234,21 @@ while ($row = $resultPizza->fetch_assoc()) {
 <nav>
   <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
   <div>
-    <a href="adicionar_gasto.php">Adicionar Gastos</a>
+    <a href="adicionar_gasto.php">Novo Registro Financeiro</a>
     <a href="pasta Dos HTML/paginaprincipal.html">Menu Principal</a>
     <a href="logout.php">Sair</a>
   </div>
 </nav>
 
 <div class="table-container">
-  <h3>Seus Gastos</h3>
+  <h3>Seus Histórico Financeiro</h3>
   <?php if (isset($_GET['success'])) echo "<p style='color: green;'>".htmlspecialchars($_GET['success'])."</p>"; ?>
   <?php if (isset($_GET['error'])) echo "<p style='color: red;'>".htmlspecialchars($_GET['error'])."</p>"; ?>
   <?php if ($result->num_rows > 0): ?>
     <table>
       <thead>
         <tr>
-          <th>Gasto</th>
+          <th>Nome do Produto</th>
           <th>Data</th>
           <th>Preço</th>
           <th>Categoria</th>
@@ -257,9 +257,9 @@ while ($row = $resultPizza->fetch_assoc()) {
         </tr>
       </thead>
       <tbody>
-      <?php foreach ($gastos as $row): ?>
+      <?php foreach ($Produto as $row): ?>
 <tr>
-  <td><?php echo htmlspecialchars($row['gasto']); ?></td>
+  <td><?php echo htmlspecialchars($row['Produto']); ?></td>
   <td><?php echo htmlspecialchars($row['data_gasto']); ?></td>
   <td>R$ <?php echo number_format($row['preco'], 2, ',', '.'); ?></td>
   <td><?php echo htmlspecialchars($row['categoria']); ?></td>
