@@ -1,5 +1,50 @@
 <?php
+
+/**
+ * a que abaixo esta o código que faz com que baixe todos os dados salvos na tabela gastos
+ * para o formato excel.
+ */
 session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if (isset($_POST['exportar_excel'])) {
+  $pdo = new PDO("mysql:host=localhost;dbname=sistema_login", "root", "");
+  
+  $user_id = $_SESSION['usuario_id'];
+  $stmt = $pdo->prepare("SELECT * FROM gastos WHERE user_id = ? ORDER BY data_gasto DESC, preco DESC");
+  $stmt->execute([$user_id]);
+  $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    header("Content-Type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment; filename=gastos.xls");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+
+    echo "<table border='1'>";
+    echo "<tr><th>ID user</th><th>Nome do Produto</th><th>Data</th><th>Preço (R$)</th><th>Categoria</th><th>descricao</th></tr>";
+
+    foreach ($produtos as $produto) {
+        echo "<tr>";
+        echo "<td>{$produto['user_id']}</td>";
+        echo "<td>" . htmlspecialchars($produto['Produto']) . "</td>";
+        echo "<td>{$produto['data_gasto']}</td>";
+        echo "<td>{$produto['preco']}</td>";
+        echo "<td>{$produto['categoria']}</td>";
+        echo "<td>{$produto['descricao']}</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+    exit(); // IMPORTANTE: impede que o restante da página seja processado
+}
+?>
+
+<?php
+
 
 // Verificar se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
@@ -239,6 +284,13 @@ while ($row = $resultPizza->fetch_assoc()) {
     <a href="logout.php">Sair</a>
   </div>
 </nav>
+
+<!--div que tem o botão para baixar para excel-->
+
+<form method="post">
+    <button type="submit" name="exportar_excel">Exportar para Excel</button>
+</form>
+
 
 <div class="table-container">
   <h3>Seus Histórico Financeiro</h3>
