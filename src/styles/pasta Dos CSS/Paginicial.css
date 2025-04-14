@@ -1,0 +1,258 @@
+/* Impede qualquer rolagem horizontal no site */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Garante que nenhum elemento vaze pra fora da largura da tela */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/*
+Dica extra:
+Se você estiver usando margens negativas, width: 100vw,
+ ou position: absolute com valores de left/right exagerados em algum lugar,
+    isso pode causar o problema. A solução acima já previne,
+*/
+
+/*Estilização do reader*/
+header {
+  background: linear-gradient(
+    to right,
+    #0d1b2a,
+    #0099ff
+  ); /* azul escuro para azul mais vivo */
+  padding: 30px 0;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem; /* Aumentado o tamanho da fonte */
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #a0c4ff;
+}
+
+.login {
+  text-align: right;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: white;
+  color: #1e3a8a;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #dbeafe;
+}
+
+/* Estili do Comteudo do futuro da sua liberdade....*/
+
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fdfdfd;
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-section h1 {
+  font-size: 3.5em; /* para almentar o tamanho da funte viunn!!!! do H1 */
+  font-weight: 900;
+  color: #020021;
+  margin-bottom: 25px;
+}
+
+.hero-section .highlight {
+  color: #3ec6ff;
+}
+
+.hero-section p {
+  font-size: 1.4em; /* para almentar o tamanho da fonte viunnn!!! do paragrafo! <p> */
+  color: #020021;
+  margin-bottom: 35px;
+}
+
+.hero-section strong {
+  font-weight: 700;
+  color: #020021;
+}
+
+/* a que é a estilização do querido e velho amigo BOTÃOOO esse HJASDGAJSDGH. */
+
+.cta-buttonn a {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 1em;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(90deg, #0f1f61, #3ec6ff);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cta-buttonn a:hover {
+  transform: scale(1.05);
+}
+
+/*estilização da primeira imagem a do dashboard HEHEHEH*/
+
+.dashboard-image {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-image img {
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/*Estilo do paragrafo abaixo da imagem*/
+
+.Paragrafo {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fdfdfd;
+  font-family: "Poppins", sans-serif;
+}
+.Paragrafo p {
+  font-size: 2em; /* para almentar o tamanho da funte viunn!!!! do p */
+  font-weight: 900;
+  color: #020021;
+  margin-bottom: 25px;
+}
+.Paragrafo span {
+  color: #3ec6ff;
+}
+
+/* estilização do IA. SISTEMA FINANCEIRO E DASHBOARD - AUCTUS */
+
+.info-section {
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.info-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.info-box.reverse {
+  flex-direction: row-reverse;
+}
+
+.image-box {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  height: 320px;
+  border: 3px solid #62b4e9;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.text-box {
+  flex: 2;
+  min-width: 300px;
+  color: #000;
+  max-width: 600px; /* Limita a largura dos textos */
+}
+
+.text-box h2 {
+  color: #001944;
+  font-size: 28px; /* Aumentado */
+  margin-bottom: 20px;
+}
+
+.text-box p {
+  font-size: 18px; /* Aumentado */
+  line-height: 1.7;
+  margin-bottom: 12px;
+  color: #001944;
+}
+
+.text-box strong {
+  color: #003072;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #0a2342, #30c3ff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 16px;
+}

@@ -47,194 +47,106 @@ $conn->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LM R. Finanças</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-image: linear-gradient(to right, #00c6ff, #0072ff);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            color: #333;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        /* Cabeçalho */
-        header {
-            background-color: #00509e;
-            color: #fff;
-            padding: 20px 0;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            letter-spacing: 1px;
-        }
-
-        header nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        header nav ul li {
-            display: inline;
-        }
-
-        header nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        header nav ul li a:hover {
-            color: #e0e0e0;
-        }
-
-        /* Estilo da caixa central */
-        .box {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            width: 30%;
-            text-align: center;
-            margin: 20px auto;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #00509e;
-        }
-
-        .btn {
-            background-color: #0072ff;
-            color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #00509e;
-        }
-
-        /* Estilo principal */
-        main {
-            flex: 1;
-            padding: 20px 0;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #00509e;
-            color: #fff;
-            padding: 20px 0;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        footer .social-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        footer .social-icons a {
-            margin: 0 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-            transition: color 0.3s ease;
-        }
-
-        footer .social-icons a:hover {
-            color: #e0e0e0;
-        }
-
-        footer .whatsapp:hover {
-            color: #25D366; /* Cor do WhatsApp */
-        }
-
-        footer .facebook:hover {
-            color: #3b5998; /* Cor do Facebook */
-        }
-
-        /* Instagram com dropdown */
-        .instagram-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .instagram-container .dropdown {
-            display: none;
-            position: absolute;
-            left: 40px;
-            top: -40px;
-            background-color: #fff;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-
-        .instagram-container .dropdown a {
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 10px;
-            font-weight: bolder;
-            
-        }
-
-        .instagram-container .dropdown a:hover {
-            color: #C13584; /* Cor do Instagram */
-        }
-
-        .instagram-container:hover .dropdown {
-            display: block;
-        }
-
-        .instagram-container:hover a.instagram {
-            color: #C13584; /* Cor do Instagram */
-        }
-    </style>
+    <link rel="stylesheet" href="../src/styles/pasta Dos CSS/Paginicial.css">
+    
 </head>
 <body>
 
     <!-- Cabeçalho -->
     <header>
-        <div class="container">
-            <h1>LM R. Finanças</h1>
-            <nav>
-                <ul>
-                    <li><a href="paginicial.php">Início</a></li>
-                    <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
-                    <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
-                    <li><a href="../src/pages/pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <img src="#" alt="logo do sistema" class="logo">
+        
+        <nav class="nav-links">
+            <ul>
+                <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
+                <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
+                <li><a href="../src/pages/pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
+            </ul>
+        </nav>
+
+        <div class="login">
+            <a href="../src/pages/loginN.php"><button class="btn">Entra/Login</button></a>
         </div>
-    </header>
+    </div>
+</header>
+
+    <!-- Comteudo do futuro da sua liberdade.... -->
+    <div class="hero-section">
+        <h1>
+            O Futuro da sua<br>
+            Liberdade <span class="highlight">Financeira</span>
+        </h1>
+
+        <p>
+            Organize suas finanças com
+            <strong>inteligência e<br>eficiência</strong>
+        </p>
+
+        <div class="cta-buttonn">
+            <a href="#">ASSINE JÁ</a>
+        </div>
+    </div>
+
+    <!-- agora vem a imagem deacordo com o pdf -->
+    <!-- Imagem centralizada abaixo do conteúdo -->
+  <div class="dashboard-image">
+    <img src="../src/assets/Imagens do Site/Captura de tela 2025-04-14 092901.png" alt="Dashboard Financeiro" />
+  </div>
+
+    <div class="Paragrafo">
+        <p> Ferramentas exclusivas <br>
+            que vão te <span>ajudar na sua Jornada</span>
+        </p>
+    </div>
+
+    <!-- IA. SISTEMA FINANCEIRO E DASHBOARD - AUCTUS -->
+
+    <section class="info-section">
+
+  <div class="info-container">
+
+    <!-- Bloco 1: IA Assistente -->
+    <div class="info-box">
+      <div class="image-box">
+        <img src="img/ia-placeholder.png" alt="IA Assistente">
+      </div>
+      <div class="text-box">
+        <h2>IA. Assistente Financeira</h2>
+        <p>
+          Sempre ativa e pronta para te atender oferecendo respostas em 
+          <strong>tempo real</strong> com 
+          <strong>agilidade, precisão</strong> e total compromisso com a sua necessidade.
+        </p>
+        <p>
+          Conte com a gente para <strong>esclarecer dúvidas</strong>, resolver problemas e garantir uma 
+          <strong>experiência cada vez mais eficiente</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bloco 2: Dashboard -->
+    <div class="info-box reverse">
+        <div class="image-box">
+            <img src="img/grafico-placeholder.png" alt="Dashboard Gráfico">
+        </div>
+        
+        <div class="text-box">
+            <h2>Dashboard - Auctus</h2>
+            <p>
+                Uma ferramenta <strong>estratégica</strong> que oferece uma 
+                <strong>visão clara e em tempo real</strong> dos principais indicadores.
+                Decisões mais rápidas, acompanha o <strong>desempenho</strong> e identifica 
+                <strong>oportunidades com agilidade</strong>.
+            </p>
+            <a href="#" class="cta-button">ASSINE JÁ</a>
+        </div>
+        
+    </div>
+
+  </div>
+
+</section>
 
     <!-- Conteúdo principal da página -->
     <main>
