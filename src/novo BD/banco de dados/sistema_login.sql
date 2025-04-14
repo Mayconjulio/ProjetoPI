@@ -41,7 +41,7 @@ CREATE TABLE `gastos` (
 -- Despejando dados para a tabela `gastos`
 --
 
-INSERT INTO `gastos` (`id`, `user_id`, `gasto`, `data_gasto`, `preco`, `categoria`, `descricao`) VALUES
+INSERT INTO `gastos` (`id`, `user_id`, `Produto`, `data_gasto`, `preco`, `categoria`, `descricao`) VALUES
 (5, 4, '12m', '2024-11-15', 1234.00, 'Saúde', 'vfuodd'),
 (8, 2, 'blabla', '2005-02-12', 699563.00, 'Transporte', 'hhdkv,bn.svjn ljn');
 
