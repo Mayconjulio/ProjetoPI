@@ -54,22 +54,22 @@ $conn->close();
 
     <!-- Cabeçalho -->
     <header>
-    <div class="container">
-        <img src="#" alt="logo do sistema" class="logo">
+        <div class="container">
+            <img src="#" alt="logo do sistema" class="logo">
         
-        <nav class="nav-links">
-            <ul>
-                <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
-                <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
-                <li><a href="../src/pages/pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
-            </ul>
-        </nav>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
+                    <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
+                    <li><a href="../src/pages/pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
+                </ul>
+            </nav>
 
-        <div class="login">
-            <a href="../src/pages/loginN.php"><button class="btn">Entra/Login</button></a>
+            <div class="login">
+                <a href="../src/pages/loginN.php"><button class="btn">Entra/Login</button></a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <!-- Comteudo do futuro da sua liberdade.... -->
     <div class="hero-section">
@@ -104,49 +104,50 @@ $conn->close();
 
     <section class="info-section">
 
-  <div class="info-container">
+        <div class="info-container">
 
-    <!-- Bloco 1: IA Assistente -->
-    <div class="info-box">
-      <div class="image-box">
-        <img src="img/ia-placeholder.png" alt="IA Assistente">
-      </div>
-      <div class="text-box">
-        <h2>IA. Assistente Financeira</h2>
-        <p>
-          Sempre ativa e pronta para te atender oferecendo respostas em 
-          <strong>tempo real</strong> com 
-          <strong>agilidade, precisão</strong> e total compromisso com a sua necessidade.
-        </p>
-        <p>
-          Conte com a gente para <strong>esclarecer dúvidas</strong>, resolver problemas e garantir uma 
-          <strong>experiência cada vez mais eficiente</strong>.
-        </p>
-      </div>
-    </div>
+            <!-- Bloco 1: IA Assistente -->
+            <div class="info-box">
+                <div class="image-box">
+                    <img src="img/ia-placeholder.png" alt="IA Assistente">
+                </div>
+
+                <div class="text-box">
+                    <h2>IA. Assistente Financeira</h2>
+                    <p>
+                        Sempre ativa e pronta para te atender oferecendo respostas em 
+                        <strong>tempo real</strong> com 
+                        <strong>agilidade, precisão</strong> e total compromisso com a sua necessidade.
+                    </p>
+                    <p>
+                    Conte com a gente para <strong>esclarecer dúvidas</strong>, resolver problemas e garantir uma 
+                    <strong>experiência cada vez mais eficiente</strong>.
+                    </p>
+                </div>
+            </div>
 
     <!-- Bloco 2: Dashboard -->
-    <div class="info-box reverse">
-        <div class="image-box">
-            <img src="img/grafico-placeholder.png" alt="Dashboard Gráfico">
-        </div>
+            <div class="info-box reverse">
+                <div class="image-box">
+                    <img src="img/grafico-placeholder.png" alt="Dashboard Gráfico">
+                </div>
         
-        <div class="text-box">
-            <h2>Dashboard - Auctus</h2>
-            <p>
-                Uma ferramenta <strong>estratégica</strong> que oferece uma 
-                <strong>visão clara e em tempo real</strong> dos principais indicadores.
-                Decisões mais rápidas, acompanha o <strong>desempenho</strong> e identifica 
-                <strong>oportunidades com agilidade</strong>.
-            </p>
-            <a href="#" class="cta-button">ASSINE JÁ</a>
-        </div>
+                <div class="text-box">
+                    <h2>Dashboard - Auctus</h2>
+                    <p>
+                    Uma ferramenta <strong>estratégica</strong> que oferece uma 
+                    <strong>visão clara e em tempo real</strong> dos principais indicadores.
+                    Decisões mais rápidas, acompanha o <strong>desempenho</strong> e identifica 
+                    <strong>oportunidades com agilidade</strong>.
+                    </p>
+                    <a href="#" class="cta-button">ASSINE JÁ</a>
+                </div>
         
-    </div>
+            </div>
 
-  </div>
+        </div>
 
-</section>
+    </section>
 
     <!-- Conteúdo principal da página -->
     <main>
