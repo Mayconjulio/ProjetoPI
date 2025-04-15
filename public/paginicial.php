@@ -149,34 +149,43 @@ $conn->close();
 
     </section>
 
-    <!-- Conteúdo principal da página -->
-    <main>
-        <div class="box">
-            <h2>Bem-vindo!</h2>
-            <p>Faça login para acessar suas Finanças</p>
-            <a href="../src/pages/loginN.php"><button class="btn">Login</button></a>
-        </div>
-    </main>
-
     <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="https://www.whatsapp.com" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-
-                <!-- Instagram com animação ao passar o mouse -->
-                <div class="instagram-container">
-                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-                    <div class="dropdown">
-                        <a href="https://www.instagram.com/mayconjulio74/" target="_blank">DEV1</a>
-                        <a href="https://www.instagram.com/luisfernandofilhodedeus/" target="_blank">DEV2</a>
-                    </div>
-                </div>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+            <img src="logo.png" alt="Logo Auctus" />
+            <p class="descricao">
+                <strong>Auctus</strong> vem do Latim <strong>“crescimento”</strong> é uma sistema<br>
+                de <strong>controle financeiro</strong>, com <strong>navegação fácil e sem<br>complicações</strong>
+            </p>
+            <div class="footer-social">
+                <a href="#"><img src="icons/youtube.svg" alt="YouTube"></a>
+                <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+                <a href="#"><img src="icons/tiktok.svg" alt="TikTok"></a>
             </div>
-            <p>&copy; 2024 Nome do Site. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+            </div>
+
+            <div class="footer-links">
+            <h4>FUNCIONALIDADES ▼</h4>
+            <ul>
+                <li>Controle de Gastos</li>
+                <li>Assistente Inteligente</li>
+                <li>Dashboard Estratégico</li>
+            </ul>
+            </div>
+
+            <div class="footer-links">
+            <h4>SUPORTE ▼</h4>
+            <ul>
+                <li><a href="#">CLICK AQUI!</a></li>
+            </ul>
+            </div>
+    </div>
+
+  <p class="footer-copy">Desenvolvido por ByAvanced...</p>
+</footer>
+
+
 
 </body>
 </html>
