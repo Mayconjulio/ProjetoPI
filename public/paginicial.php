@@ -48,6 +48,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LM R. Finanças</title>
     <link rel="stylesheet" href="../src/styles/pasta Dos CSS/Paginicial.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     
 </head>
 <body>
@@ -55,7 +56,7 @@ $conn->close();
     <!-- Cabeçalho -->
     <header>
         <div class="container">
-            <img src="#" alt="logo do sistema" class="logo">
+            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
         
             <nav class="nav-links">
                 <ul>
@@ -109,7 +110,8 @@ $conn->close();
             <!-- Bloco 1: IA Assistente -->
             <div class="info-box">
                 <div class="image-box">
-                    <img src="img/ia-placeholder.png" alt="IA Assistente">
+                    <!--tamanho da imagem 510 x 420 fica perfeita-->
+                    <img src="https://gartic.com.br/imgs/mural/ju/jungkook_ssi/aflito.png" alt="IA Assistente">
                 </div>
 
                 <div class="text-box">
@@ -129,7 +131,8 @@ $conn->close();
     <!-- Bloco 2: Dashboard -->
             <div class="info-box reverse">
                 <div class="image-box">
-                    <img src="img/grafico-placeholder.png" alt="Dashboard Gráfico">
+                    <!--tamanho da imagem 510 x 420 fica perfeita-->
+                    <img src="https://gartic.com.br/imgs/mural/de/desenhista_maluca/coisas-aleatorias-2part-1.png" alt="Dashboard Gráfico">
                 </div>
         
                 <div class="text-box">
@@ -149,20 +152,59 @@ $conn->close();
 
     </section>
 
+   <!-- abaixo esta a parte do Descomplique suas finanças e foque no crescimento -->
+    
+   <h1>Descomplique suas finanças e<br> foque no <span>crescimento</span></h1>
+
+<div class="card-container">
+    <div class="feature-card">
+        <i class="bi bi-piggy-bank"></i>
+        <div>
+            <h2>Controle de Gastos</h2>
+            <p>Controle seus gastos de forma eficiente e organizada</p>
+        </div>
+    </div>
+    <div class="feature-card">
+        <i class="bi bi-shield-check"></i>
+        <div>
+            <h2>Segurança de dados</h2>
+            <p>Garantimos que seus dados estarão protegidos de qualquer tipo de ameaça</p>
+        </div>
+    </div>
+</div>
+
+<!-- Conteudo de Controle de Gastos Assistente Inteligente etc-->
+<div class="section-container">
+    <div class="benefits-box">
+        <ul>
+            <li><i class="bi bi-check-circle-fill"></i>Controle de Gastos</li>
+            <li><i class="bi bi-check-circle-fill"></i>Assistente Inteligente</li>
+            <li><i class="bi bi-check-circle-fill"></i>Dashboard Estratégico</li>
+        </ul>
+        <button class="subscribe-btn">ASSINE JÁ</button>
+    </div>
+
+    <div class="image-boxx">
+        <div class="image-contentt">
+            <!-- Substitua o src com o caminho da sua imagem -->
+            <img src="../src/assets/Imagens do Site/Captura de tela 2025-04-15 094053.png" alt="Imagem do sistema">
+        </div>
+    </div>
+</div>
     <!-- Rodapé -->
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-logo">
-            <img src="logo.png" alt="Logo Auctus" />
+            <img src="../src/assets/Imagens do Site/Pad" alt="Logo Auctus" />
             <p class="descricao">
                 <strong>Auctus</strong> vem do Latim <strong>“crescimento”</strong> é uma sistema<br>
                 de <strong>controle financeiro</strong>, com <strong>navegação fácil e sem<br>complicações</strong>
             </p>
             <div class="footer-social">
-                <a href="#"><img src="icons/youtube.svg" alt="YouTube"></a>
-                <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
-                <a href="#"><img src="icons/tiktok.svg" alt="TikTok"></a>
-            </div>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-tiktok"></i></a>
+          </div>
             </div>
 
             <div class="footer-links">
