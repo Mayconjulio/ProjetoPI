@@ -1,115 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-    font-family: "Arial", sans-serif;
-    background-image: linear-gradient(to right, #00c6ff, #0072ff);
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-box {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-    color: #0072ff;
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="password"],
-  input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #0072ff;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-  }
-  
-  input[type="text"]:focus,
-  input[type="password"]:focus,
-  input[type="email"]:focus {
-    border-color: #00c6ff;
-    outline: none;
-  }
-  
-  .button {
-    background-color: #0072ff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #005bb5;
-  }
-  
-  .forgot-password {
-    margin-top: 10px;
-  }
-  
-  .forgot-password a {
-    color: #0072ff;
-    text-decoration: none;
-  }
-  
-  .forgot-password a:hover {
-    text-decoration: underline;
-  }
-  .botao-voltar {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: 2px solid transparent;
-  }
-  
-  .botao-voltar:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-    border-color: #2e7d32;
-  }
-  
-  .botao-voltar:active {
-    transform: scale(0.98);
-    background-color: #3e8e41;
-  }
-  
-  .botao-voltar:before {
-    content: "← ";
-  }
+  background: linear-gradient(to right, #0f1d4c, #3bb6e5);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.slogan {
+  text-align: center;
+  font-size: 1.3rem; /* aumentei a fonte */
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.slogan span {
+  display: block;
+  font-size: 1.3rem; /* maior destaque para FINANCEIRA */
+  font-weight: bold;
+  margin-top: 0.3rem;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  color: #00e1ff;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  font-size: 1.3rem;
+}
+
+.login-form input {
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.login-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.senha-link {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.senha-link a {
+  font-size: 0.75rem;
+  color: white;
+  text-decoration: none;
+  padding-left: 25px;
+}
+
+.sem-conta {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #00c8ff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.sem-conta:hover {
+  text-decoration: underline;
+  color: #ffffff; /* opcional para efeito ao passar o mouse */
+}
+
+.btn-cadastrar {
+  margin-top: 0.1rem;
+  padding: 0.8rem;
+  background-color: white;
+  color: #001944;
+  font-weight: bold;
+  border: none;
+  max-width: 12rem;
+  margin-left: 21%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-cadastrar:hover {
+  background-color: #cce7ff;
+}

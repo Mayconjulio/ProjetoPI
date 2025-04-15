@@ -3,46 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/pasta Dos CSS/login.css" />
     <title>Página de Login - Finanças</title>
+    <link rel="stylesheet" href="../styles/pasta Dos CSS/login.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="login-box">
-      <?php
-  if (isset($_GET['error'])) {
-      echo "<div class='error'>" . htmlspecialchars($_GET['error']) . "</div>";
-  }
-  if (isset($_GET['success'])) {
-      echo "<div class='success'>" . htmlspecialchars($_GET['success']) . "</div>";
-  }
-  ?>
-        <h2>Entre na sua Conta</h2>
-        
-        <form action="login.php" method="post">
-          <div class="input-group">
-            <label for="username">Usuário</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Digite seu nome de usuário"
-              required
-            />
-          </div>
-          <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" placeholder="E-mail" required />
-          </div>
-          <div class="input-group">
-            <label for="password">Senha</label>
-            <input type="password" name="senha" placeholder="Senha" required />
-          </div>
+  <div class="login-container">
+      <img
+        src="https://static.vecteezy.com/ti/fotos-gratis/t2/23701963-selvagem-leopardo-animal-ilustracao-ai-generativo-gratis-foto.jpg"
+        alt="Logo Auctus Fynance"
+        class="logo"
+      />
+      <h2 class="slogan">
+        O FUTURO DA SUA LIBERDADE <br /><span>FINANCEIRA</span>
+      </h2>
 
-          <input class="button" type="submit" value="Entrar" />
-        </form>
-        <p class="forgot-password"><a href="pasta%20Dos%20HTML/servicos.html">Esqueceu sua senha?</a></p>
-        <a href="pasta Dos HTML/inicio.html" class="botao-voltar">Voltar</a>
-      </div>
+      <?php
+          if (isset($_GET['error'])) {
+              echo "<div class='error'>" . htmlspecialchars($_GET['error']) . "</div>";
+          }
+          if (isset($_GET['success'])) {
+              echo "<div class='success'>" . htmlspecialchars($_GET['success']) . "</div>";
+          }
+        ?>
+
+      <form action="login.php" method="POST" class="login-form">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Nome de Usuário / numero de Telefone"
+          required
+        />
+
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          name="senha"
+          id="senha"
+          placeholder="Senha"
+          required
+        />
+
+        <div class="senha-link">
+          <a href="../../public/paginicial.php" class=""
+            >Voltar Para pagina Inicial</a
+          >
+
+          <a href="pasta%20Dos%20HTML/servicos.html">esqueceu a senha?</a>
+        </div>
+
+        <a href="./pasta Dos HTML/sComocadastra.html" class="sem-conta">Não possui cadastro?</a>
+
+        <button type="submit" class="btn-cadastrar">CADASTRE-SE</button>
+      </form>
     </div>
   </body>
 </html>
