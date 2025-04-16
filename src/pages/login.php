@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($id == 1) {
                 header("Location: cadastrar.php"); // Página do administrador
             } else {
-                header("Location: pasta Dos HTML/paginaprincipal.html"); // Página para usuários comuns
+                header("Location: pasta Dos HTML/paginaprincipal.php"); // Página para usuários comuns
             }
             exit();
         } else {

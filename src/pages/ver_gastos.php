@@ -280,7 +280,7 @@ while ($row = $resultPizza->fetch_assoc()) {
   <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
   <div>
     <a href="adicionar_gasto.php">Novo Registro Financeiro</a>
-    <a href="pasta Dos HTML/paginaprincipal.html">Menu Principal</a>
+    <a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a>
     <a href="logout.php">Sair</a>
   </div>
 </nav>
