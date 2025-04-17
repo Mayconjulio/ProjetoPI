@@ -101,7 +101,7 @@ header {
 .bem-vindo {
   display: block;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: "Atomic", sans-serif;
   margin: 30px 0;
   color: #0d1b2a;
@@ -110,3 +110,117 @@ header {
 }
 
 /* estilização do formulario */
+
+.form-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 20px;
+}
+
+.form-wrapper {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-wrapper label {
+  font-weight: 600;
+  color: #0d1b2a;
+}
+
+.form-wrapper input[type="text"],
+.form-wrapper input[type="date"],
+.form-wrapper input[type="number"],
+.form-wrapper select,
+.form-wrapper textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.form-wrapper input:focus,
+.form-wrapper select:focus,
+.form-wrapper textarea:focus {
+  border-color: #0099ff;
+  outline: none;
+}
+
+.form-wrapper textarea {
+  resize: vertical;
+}
+
+.form-wrapper input[type="submit"] {
+  background: linear-gradient(to right, #0b0b46, #4db8e4);
+  color: white;
+  border: none;
+  border-radius: 5px; /* menos arredondado */
+  padding: 10px 30px; /* tamanho um pouco maior */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px auto 0;
+  display: block; /* para o margin auto funcionar e centralizar */
+  text-align: center;
+}
+
+/* Estilização do paragrafo! */
+.form-wrapper #p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  white-space: pre-wrap; /* Permite quebras de linha */
+  max-width: 200px; /* Limita a largura */
+  margin-top: 20px; /* Um pouco de espaço acima */
+}
+
+#p {
+  position: fixed; /* Fixa o texto na tela */
+  bottom: 20px; /* Fica 20px do fundo */
+  right: 80px; /* Fica 20px da direita */
+  text-align: right;
+}
+
+#p br {
+  display: block; /* Garante a quebra de linha */
+}
+
+/* Mensagens */
+.mensagem {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.sucesso {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #34d399;
+}
+
+.erro {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #f87171;
+}

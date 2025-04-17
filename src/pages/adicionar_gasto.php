@@ -70,46 +70,51 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <span class="bem-vindo"><?php echo htmlspecialchars($nome); ?>, Este campo é destinado ao registro de suas informações.</span>
   
 
-<div class="container">
-  <?php
-  if (isset($_GET['success'])) {
-      echo "<p style='color: green;'>" . htmlspecialchars($_GET['success']) . "</p>";
-  }
-  if (isset($_GET['error'])) {
-      echo "<p style='color: red;'>" . htmlspecialchars($_GET['error']) . "</p>";
-  }
-  ?>
+  <div class="form-page">
+  <div class="form-wrapper">
+    <form action="adicionar_gasto.php" method="post">
 
-  
-  <form action="adicionar_gasto.php" method="post">
-    <label for="gasto">Nome do Produto:</label>
-    <input type="text" step="0.01" name="Produto" id="Produto" required>
+      <?php
+      if (isset($_GET['success'])) {
+          echo "<p class='mensagem sucesso'>" . htmlspecialchars($_GET['success']) . "</p>";
+      }
+      if (isset($_GET['error'])) {
+          echo "<p class='mensagem erro'>" . htmlspecialchars($_GET['error']) . "</p>";
+      }
+      ?>
 
-    <label for="data_gasto">Data do Gasto:</label>
-    <input type="date" name="data_gasto" id="data_gasto" required>
+      <label for="gasto">Nome do Produto:</label>
+      <input type="text" step="0.01" name="Produto" id="Produto" required>
 
-    <label for="preco">Preço do Produto:</label>
-    <input type="number" step="0.01" name="preco" id="preco" required>
+      <label for="data_gasto">Data do Gasto:</label>
+      <input type="date" name="data_gasto" id="data_gasto" required>
 
-    <label for="categoria">Categoria:</label>
-    <select name="categoria" id="categoria" required>
+      <label for="preco">Preço do Produto:</label>
+      <input type="number" step="0.01" name="preco" id="preco" required>
+
+      <label for="categoria">Categoria:</label>
+      <select name="categoria" id="categoria" required>
         <option value=""></option>
-      <option value="Alimentação">Alimentação</option>
-      <option value="Transporte">Transporte</option>
-      <option value="Lazer">Lazer</option>
-      <option value="Saúde">Saúde</option>
-      <option value="Educação">Educação</option>
-      <option value="Outros">Outros</option>
-    </select>
+        <option value="Alimentação">Alimentação</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Lazer">Lazer</option>
+        <option value="Saúde">Saúde</option>
+        <option value="Educação">Educação</option>
+        <option value="Outros">Outros</option>
+      </select>
 
-    <label for="descricao">Descrição:</label>
-    <textarea name="descricao" id="descricao" rows="3" placeholder="Descrição do gasto"></textarea>
+      <label for="descricao">Descrição:</label>
+      <textarea name="descricao" id="descricao" rows="3" placeholder="Descrição do gasto"></textarea>
 
-    <input type="submit" value="Adicionar Gasto">
-  </form>
+      <input type="submit" value="Adicionar">
+    </form>
+    <p id="p">Preste atenção na hora<br>de organizar seus<br>gastos!</p>
+  </div>
+  
 </div>
 
-  <p>Preste atenção na hora de organizar seus gastos!</p>
+
+  
 
 </body>
 </html>
