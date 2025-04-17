@@ -132,168 +132,37 @@ while ($row = $resultPizza->fetch_assoc()) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Histórico Financeiro</title>
-  <style>
-            body {
-          font-family: Arial, sans-serif;
-          background-color: #f4f4f4;
-          margin: 0;
-          padding: 20px;
-      }
-      nav {
-          background: #007bff;
-          text-align: center;
-          color: white;
-          padding: 15px;
-          border-radius: 10px;
-          margin-bottom: 20px;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      nav span {
-          margin-bottom: 10px;
-          display: block;
-          font-weight: bold;
-          font-size: 1.2em;
-      }
-
-      nav a {
-          color: white;
-          text-decoration: none;
-          display: inline-block;
-          margin: 0 15px;
-          padding: 5px 10px;
-          border-radius: 5px;
-          background-color: #0056b3;
-          transition: background-color 0.3s;
-          font-weight: bolder;
-      }
-
-      nav a:hover {
-          background-color: #003f8a;
-          color: #4caf50;
-      }
-
-      h3 {
-          text-align: center;
-          color: #333;
-      }
-
-      .table-container {
-          margin-top: 20px;
-          background: white;
-          padding: 15px;
-          border-radius: 5px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-
-      table {
-          width: 100%;
-          border-collapse: collapse;
-      }
-
-      th, td {
-          padding: 10px;
-          text-align: left;
-          border-bottom: 1px solid #ddd;
-      }
-
-      th {
-          background-color: #4caf50;
-          color: white;
-      }
-
-      tr:hover {
-          background-color: #f1f1f1;
-      }
-
-      p {
-          color: #888;
-      }
- 
-    /**
-    Abaixo esta o estilo de dashboard - a estilização do botão e o tamanho do dashboard também esta sendo afetado por essa estilização!
-    */
-  
-  #dashboard {
-    display: none;
-    width: fit-content;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-  }
-
-  .graficos-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
-  }
-
-  .grafico {
-    text-align: center;
-  }
-
-  .grafico canvas {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .grafico-legenda {
-    font-weight: bold;
-    color: #333;
-    margin-top: 10px;
-  }
-  .btnn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #001dd8;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-
-  .btnn:hover {
-    background-color: #3b44f5;
-  }
-
-  @media (max-width: 768px) {
-    .graficos-container {
-      flex-direction: column;
-      gap: 20px;
-    }
-  }
-</style>
+  <link rel="stylesheet" href="../styles/pasta Dos CSS/ver_gastos.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 
 </head>
 <body>
 
-<nav>
-  <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
-  <div>
-    <a href="adicionar_gasto.php">Novo Registro Financeiro</a>
-    <a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a>
-    <a href="logout.php">Sair</a>
-  </div>
-</nav>
+<!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
+        
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="adicionar_gasto.php">Novo Registro Financeiro</a></li>
+                    <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
+                    <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </nav>
 
-<!--div que tem o botão para baixar para excel-->
+            <div class="login">
+            <a href="logout.php">Sair da conta</a>
+            </div>
+        </div>
+    </header>
 
-<form method="post">
-    <button type="submit" name="exportar_excel">Exportar para Excel</button>
-</form>
+    <span class="bem-vindo">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
 
-
+  
 <div class="table-container">
-  <h3>Seus Histórico Financeiro</h3>
+  
   <?php if (isset($_GET['success'])) echo "<p style='color: green;'>".htmlspecialchars($_GET['success'])."</p>"; ?>
   <?php if (isset($_GET['error'])) echo "<p style='color: red;'>".htmlspecialchars($_GET['error'])."</p>"; ?>
   <?php if ($result->num_rows > 0): ?>
@@ -317,9 +186,14 @@ while ($row = $resultPizza->fetch_assoc()) {
   <td><?php echo htmlspecialchars($row['categoria']); ?></td>
   <td><?php echo htmlspecialchars($row['descricao']); ?></td>
   <td>
-    <a class="btn btn-edit" href="editar_gasto.php?id=<?php echo $row['id']; ?>">Editar</a>
-    <a class="btn btn-delete" href="ver_gastos.php?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">Excluir</a>
-  </td>
+  <a class="botao-editar" href="editar_gasto.php?id=<?php echo $row['id']; ?>">
+    <i class="bi bi-pencil-fill"></i> Editar
+  </a>
+  <a class="botao-excluir" href="ver_gastos.php?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">
+    <i class="bi bi-trash-fill"></i> Excluir
+  </a>
+</td>
+
 </tr>
 <?php endforeach; ?>
       </tbody>
@@ -329,8 +203,20 @@ while ($row = $resultPizza->fetch_assoc()) {
   <?php endif; ?>
 </div>
 
-  <!-- DA QUE PARA BAIXO ESTÃO OS CÓDIGOS DO DASHBOARD-->
-  <button class="btnn" onclick="mostrarDashboard()">📊 Mostrar Dashboard de Gastos</button>
+<!-- Área de botões -->
+<div class="botoes-dashboard">
+  <!-- Botão Exportar Excel -->
+  <form method="post">
+    <button type="submit" name="exportar_excel" class="btn-dashboard">
+      <i class="bi bi-file-earmark-excel-fill"></i> Exportar para Excel
+    </button>
+  </form>
+
+  <!-- Botão Mostrar Dashboard -->
+  <button class="btn-dashboard" onclick="mostrarDashboard()">
+    <i class="bi bi-graph-up-arrow"></i> Mostrar Dashboard de Gastos
+  </button>
+</div>
 
 <div id="dashboard">
   <h3 style="text-align: center;">Gastos por Data e por Categoria</h3>

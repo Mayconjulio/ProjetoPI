@@ -44,133 +44,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Registro Financeiro</title>
-  
-  <style>
-      body {
-          font-family: "Arial", sans-serif;
-          background-color: #f4f4f9;
-          color: #333;
-          margin: 0;
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-      }
-
-      
-      nav {
-          background: #007bff;
-          text-align: center;
-          color: white;
-          padding: 15px;
-          padding-left: 540px;
-          padding-right: 540px;
-          border-radius: 10px;
-          margin-bottom: 20px;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      nav span {
-          margin-bottom: 10px;
-          display: block;
-          font-weight: bold;
-          font-size: 1.2em;
-      }
-
-      nav a {
-          color: white;
-          text-decoration: none;
-          display: inline-block;
-          margin: 15 50px;
-          padding: 5px 20px;
-          border-radius: 5px;
-          background-color: #0056b3;
-          transition: background-color 0.3s;
-          font-weight: bolder;
-      }
-
-      nav a:hover {
-          background-color: #003f8a;
-          color: #4caf50;
-      }
-
-      form {
-          background-color: #ffffff;
-          border-radius: 12px;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-          padding: 30px;
-          max-width: 500px;
-          width: 100%;
-      }
-
-      label {
-          display: block;
-          margin-bottom: 10px;
-          font-weight: bold;
-      }
-
-      input[type="text"],
-      input[type="number"],
-      input[type="date"],
-      select,
-      textarea {
-          width: 100%;
-          padding: 10px;
-          margin: 8px 0 20px;
-          border: 2px solid #ddd;
-          border-radius: 6px;
-          font-size: 1em;
-          background-color: #f9f9f9;
-      }
-
-      input[type="number"]:focus,
-      input[type="text"]:focus,
-      input[type="date"]:focus,
-      select:focus,
-      textarea:focus {
-          border-color: #2980b9;
-          outline: none;
-          background-color: #eef4fb;
-      }
-
-      #categoria{
-        width: 106%;
-      }
-
-      input[type="submit"] {
-          width: 100%;
-          background-color: #4caf50;
-          color: white;
-          border: none;
-          padding: 12px;
-          font-size: 1.1em;
-          cursor: pointer;
-          border-radius: 6px;
-          transition: background-color 0.3s ease;
-      }
-
-      input[type="submit"]:hover {
-          background-color: #45a049;
-      }
-
-      label[for="gasto"]::before { content: "💵 "; }
-      label[for="data_gasto"]::before { content: "📅 "; }
-      label[for="preco"]::before { content: "💲 "; }
-      label[for="categoria"]::before { content: "📂 "; }
-      label[for="descricao"]::before { content: "📝 "; }
-
-      input[type="submit"]::before { content: "🚀 "; }
-  </style>
+  <link rel="stylesheet" href="../styles/pasta Dos CSS/adicionar_gasto.css">
 </head>
 <body>
-<nav>
-  <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
-  <div>
-    <a href="ver_gastos.php">Histórico Financeiro</a>
-    <a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a>
-    <a href="logout.php">Sair</a>
-  </div>
-</nav>
+
+<!-- Cabeçalho -->
+<header>
+        <div class="container">
+            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
+        
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
+                    <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
+                    <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </nav>
+
+            <div class="login">
+            <a href="logout.php"><button class="btn">Sair da conta</button></a>
+            </div>
+        </div>
+    </header>
+
+  <span class="bem-vindo"><?php echo htmlspecialchars($nome); ?>, Este campo é destinado ao registro de suas informações.</span>
+  
 
 <div class="container">
   <?php
@@ -182,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   }
   ?>
 
-  <h3>Adicionar ao Controle Financeiro</h3>
+  
   <form action="adicionar_gasto.php" method="post">
     <label for="gasto">Nome do Produto:</label>
     <input type="text" step="0.01" name="Produto" id="Produto" required>
@@ -210,6 +108,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="submit" value="Adicionar Gasto">
   </form>
 </div>
+
+  <p>Preste atenção na hora de organizar seus gastos!</p>
 
 </body>
 </html>
