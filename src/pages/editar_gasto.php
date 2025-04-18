@@ -68,95 +68,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Gasto</title>
-  <style>
-      body { 
-        font-family: Arial, sans-serif; 
-        background-color: #f4f4f4; 
-        margin: 0; 
-        padding: 20px; 
-    }
-      nav {
-        background: #007bff; 
-        text-align: center; 
-        color: white; 
-        padding: 15px; 
-        border-radius: 10px; 
-        margin-bottom: 20px; 
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-     }
-      nav span {
-         margin-bottom: 10px;
-         display: block; 
-         font-weight: bold; 
-         font-size: 1.2em;
-         }
-      nav a { 
-        color: white; 
-        text-decoration: none; 
-        display: inline-block; 
-        margin: 0 15px; 
-        padding: 5px 10px; 
-        border-radius: 5px; 
-        background-color: #0056b3; 
-        transition: background-color 0.3s; 
-        font-weight: bolder; 
-    }
-      nav a:hover { 
-        background-color: #003f8a; 
-        color: #4caf50; }
-
-      form { 
-        background-color: white; 
-        border-radius: 10px; 
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-        padding: 20px; 
-        max-width: 500px; 
-        margin: auto;
-     }
-      label { 
-        display: block; 
-        font-weight: bold;
-        margin-bottom: 10px; 
-    }
-      input[type="text"], 
-      input[type="number"], 
-      input[type="date"], 
-      select, 
-      textarea {
-         width: 100%; 
-         padding: 10px; 
-         margin-bottom: 20px; 
-         border: 1px solid #ddd; 
-         border-radius: 5px;
-         }
-         
-      input[type="submit"] { 
-        background-color: #4caf50; 
-        color: white; 
-        border: none;
-        padding: 10px 15px;
-         cursor: pointer; 
-         border-radius: 5px; 
-         transition: background-color 0.3s; 
-         width: 100%; }
-
-      input[type="submit"]:hover { 
-        background-color: #45a049;
-     }
-  </style>
+  <link rel="stylesheet" href="../styles/pasta Dos CSS/editar_gasto.css">
 </head>
 <body>
 
-<nav>
-  <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>!</span>
-  <div>
-    <a href="ver_gastos.php">Histórico Financeiro</a>
-    <a href="pasta Dos HTML/paginaprincipal.html">Menu Principal</a>
-    <a href="logout.php">Sair</a>
-  </div>
-</nav>
 
-<h3 style="text-align: center;">Editar Gasto</h3>
+<!-- Cabeçalho -->
+<header>
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo-wrapper">
+      <img src="../assets/Imagens do Site/svg finanças/finaças svg so o nome branco.svg" alt="logo do sistema" class="logo">
+    </div>
+
+    <!-- Botão de menu hambúrguer -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Menu de navegação -->
+    <nav class="nav-links" id="navLinks">
+      <ul>
+        <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
+        <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
+        <li><a href="logout.php">Sair</a></li>
+      </ul>
+    </nav>
+
+    <!-- Botão de logout -->
+    <div class="login" id="loginBox">
+      <a href="logout.php"><button class="btn">Sair da conta</button></a>
+    </div>
+  </div>
+</header>
+
+<main class="main-content">
+    <span class="bem-vindo"><?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>! Aqui, você pode modificar os dados conforme necessário.</span>
+    
+
 
 <form action="editar_gasto.php?id=<?php echo $Produto_id; ?>" method="post">
     <label for="Produto">Nome do Produto:</label>
@@ -177,12 +128,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option value="Educação" <?php echo $Produto['categoria'] === 'Educação' ? 'selected' : ''; ?>>Educação</option>
         <option value="Outros" <?php echo $Produto['categoria'] === 'Outros' ? 'selected' : ''; ?>>Outros</option>
     </select>
-
+    <br><br>
     <label for="descricao">Descrição:</label>
     <textarea name="descricao" id="descricao" rows="3"><?php echo htmlspecialchars($Produto['descricao']); ?></textarea>
 
     <input type="submit" value="Atualizar Gasto">
 </form>
+</main>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const login = document.querySelector('.login');
+  const body = document.body;
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    login.classList.toggle('active');
+    body.classList.toggle('menu-ativo'); // essa classe ativa o deslocamento
+  });
+</script>
+
+
+
+
+
 
 </body>
 
