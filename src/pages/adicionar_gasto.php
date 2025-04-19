@@ -19,6 +19,18 @@ if ($conn->connect_error) {
 $user_id = $_SESSION['usuario_id'];
 $nome = $_SESSION['usuario_nome'];
 
+// Verificar se o ID existe na tabela de usuários
+$check_user = $conn->prepare("SELECT id FROM usuarios WHERE id = ?");
+$check_user->bind_param("i", $user_id);
+$check_user->execute();
+$result = $check_user->get_result();
+
+if ($result->num_rows === 0) {
+    // Usuário não existe no banco
+    header("Location: adicionar_gasto.php?error=Usuário não encontrado no banco de dados.");
+    exit();
+}
+
 // Adicionar gasto ao banco de dados (se o formulário foi enviado)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $Produto = $_POST['Produto'];
@@ -40,11 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt->execute()) {
         header("Location: adicionar_gasto.php?success=Gasto adicionado com sucesso!");
     } else {
-        header("Location: adicionar_gasto.php?error=Erro ao adicionar o gasto.");
+        header("Location: adicionar_gasto.php?error=Erro ao adicionar o gasto. Verifique os dados.");
     }
+
     $stmt->close();
+    $check_user->close(); // fecha a verificação do usuário também
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

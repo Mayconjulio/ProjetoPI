@@ -86,7 +86,7 @@ if (isset($_POST['exportar_excel'])) {
         echo "<td>" . date('d/m/Y', strtotime($produto['data_gasto'])) . "</td>";
         echo "<td>{$produto['preco']}</td>";
         echo "<td>{$produto['categoria']}</td>";
-        echo "<td>{$produto['tipo']}</td>";
+        echo "<td>{$produto['Tipo']}</td>";
         echo "<td>{$produto['descricao']}</td>";
         echo "</tr>";
     }
@@ -195,7 +195,7 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
             <td><?= date('d/m/Y', strtotime($row['data_gasto'])) ?></td>
             <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
             <td><?= htmlspecialchars($row['categoria']) ?></td>
-            <td><?= htmlspecialchars($row['tipo']) ?></td>
+            <td><?= htmlspecialchars($row['Tipo']) ?></td>
             <td><?= htmlspecialchars($row['descricao']) ?></td>
             <td>
               <a href="editar_gasto.php?id=<?= $row['id'] ?>">Editar</a>
