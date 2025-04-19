@@ -1,6 +1,3 @@
-
-
-
 <?php
 session_start();
 
@@ -19,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 $user_id = $_SESSION['usuario_id'];
-$Produto_id = $_GET['id'] ?? null; // Pegando o ID passado pela URL
+$Produto_id = $_GET['id'] ?? null;
 
 // Validar se o ID foi fornecido
 if (!$Produto_id) {
@@ -32,7 +29,7 @@ $stmt = $conn->prepare("SELECT * FROM gastos WHERE id = ? AND user_id = ?");
 $stmt->bind_param("ii", $Produto_id, $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
-$Produto = $result->fetch_assoc();  // Aqui é onde a variável $gasto é definida
+$Produto = $result->fetch_assoc();  
 
 // Verificar se o gasto foi encontrado
 if (!$Produto) {
@@ -40,19 +37,18 @@ if (!$Produto) {
     exit();
 }
 
-// Agora a variável $gasto está definida, e podemos usá-la para preencher o formulário
-
 // Atualizar gasto (processar formulário)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $novo_Produto = $_POST['Produto'];
     $nova_data = $_POST['data_gasto'];
     $novo_preco = $_POST['preco'];
     $nova_categoria = $_POST['categoria'];
+    $novo_tipo = $_POST['tipo']; // Novo campo
     $nova_descricao = $_POST['descricao'];
 
     // Atualizando os dados no banco
-    $stmt = $conn->prepare("UPDATE gastos SET Produto = ?, data_gasto = ?, preco = ?, categoria = ?, descricao = ? WHERE id = ? AND user_id = ?");
-    $stmt->bind_param("ssdssii", $novo_Produto, $nova_data, $novo_preco, $nova_categoria, $nova_descricao, $Produto_id, $user_id);
+    $stmt = $conn->prepare("UPDATE gastos SET Produto = ?, data_gasto = ?, preco = ?, categoria = ?, tipo = ?, descricao = ? WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ssdsssii", $novo_Produto, $nova_data, $novo_preco, $nova_categoria, $novo_tipo, $nova_descricao, $Produto_id, $user_id);
     if ($stmt->execute()) {
         header("Location: ver_gastos.php?success=Gasto atualizado com sucesso.");
     } else {
@@ -61,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -72,23 +69,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-
-<!-- Cabeçalho -->
 <header>
   <div class="container">
-    <!-- Logo -->
     <div class="logo-wrapper">
       <img src="../assets/Imagens do Site/svg finanças/finaças svg so o nome branco.svg" alt="logo do sistema" class="logo">
     </div>
 
-    <!-- Botão de menu hambúrguer -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
-    <!-- Menu de navegação -->
     <nav class="nav-links" id="navLinks">
       <ul>
         <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
@@ -97,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </ul>
     </nav>
 
-    <!-- Botão de logout -->
     <div class="login" id="loginBox">
       <a href="logout.php"><button class="btn">Sair da conta</button></a>
     </div>
@@ -106,8 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main class="main-content">
     <span class="bem-vindo"><?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>! Aqui, você pode modificar os dados conforme necessário.</span>
-    
-
 
 <form action="editar_gasto.php?id=<?php echo $Produto_id; ?>" method="post">
     <label for="Produto">Nome do Produto:</label>
@@ -128,7 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option value="Educação" <?php echo $Produto['categoria'] === 'Educação' ? 'selected' : ''; ?>>Educação</option>
         <option value="Outros" <?php echo $Produto['categoria'] === 'Outros' ? 'selected' : ''; ?>>Outros</option>
     </select>
-    <br><br>
+
+    <label for="tipo">Tipo:</label>
+    <select name="tipo" id="tipo" required>
+        <option value="Lucro" <?php echo $Produto['tipo'] === 'Lucro' ? 'selected' : ''; ?>>Lucro</option>
+        <option value="Dívida" <?php echo $Produto['tipo'] === 'Dívida' ? 'selected' : ''; ?>>Dívida</option>
+    </select>
+
     <label for="descricao">Descrição:</label>
     <textarea name="descricao" id="descricao" rows="3"><?php echo htmlspecialchars($Produto['descricao']); ?></textarea>
 
@@ -145,9 +140,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
     login.classList.toggle('active');
-    body.classList.toggle('menu-ativo'); // essa classe ativa o deslocamento
+    body.classList.toggle('menu-ativo');
   });
 </script>
+</body>
+</html>
 
 
 

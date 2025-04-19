@@ -25,10 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data_gasto = $_POST['data_gasto'];
     $preco = $_POST['preco'];
     $categoria = $_POST['categoria'];
+    $tipo = $_POST['tipo'];
     $descricao = $_POST['descricao'];
 
-    $stmt = $conn->prepare("INSERT INTO gastos (user_id, Produto, data_gasto, preco, categoria, descricao) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issdss", $user_id, $Produto, $data_gasto, $preco, $categoria, $descricao);
+    // Validação de tipo
+    if (!in_array($tipo, ['lucro', 'divida'])) {
+        header("Location: adicionar_gasto.php?error=Tipo inválido.");
+        exit();
+    }
+
+    $stmt = $conn->prepare("INSERT INTO gastos (user_id, Produto, data_gasto, preco, categoria, tipo, descricao) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("issdsss", $user_id, $Produto, $data_gasto, $preco, $categoria, $tipo, $descricao);
 
     if ($stmt->execute()) {
         header("Location: adicionar_gasto.php?success=Gasto adicionado com sucesso!");
@@ -50,27 +57,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!-- Cabeçalho -->
 <header>
-        <div class="container">
-            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
-        
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
-                    <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
-                    <li><a href="logout.php">Sair</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
 
-            <div class="login">
+        <nav class="nav-links">
+            <ul>
+                <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
+                <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
+                <li><a href="logout.php">Sair</a></li>
+            </ul>
+        </nav>
+
+        <div class="login">
             <a href="logout.php"><button class="btn">Sair da conta</button></a>
-            </div>
         </div>
-    </header>
+    </div>
+</header>
 
-  <span class="bem-vindo"><?php echo htmlspecialchars($nome); ?>, Este campo é destinado ao registro de suas informações.</span>
-  
+<span class="bem-vindo"><?php echo htmlspecialchars($nome); ?>, Este campo é destinado ao registro de suas informações.</span>
 
-  <div class="form-page">
+<div class="form-page">
   <div class="form-wrapper">
     <form action="adicionar_gasto.php" method="post">
 
@@ -103,6 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <option value="Outros">Outros</option>
       </select>
 
+      <label for="tipo">Tipo:</label>
+      <select name="tipo" id="tipo" required>
+        <option value=""></option>
+        <option value="lucro">Lucro</option>
+        <option value="divida">Dívida</option>
+      </select>
+
       <label for="descricao">Descrição:</label>
       <textarea name="descricao" id="descricao" rows="3" placeholder="Descrição do gasto"></textarea>
 
@@ -110,11 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </form>
     <p id="p">Preste atenção na hora<br>de organizar seus<br>gastos!</p>
   </div>
-  
 </div>
-
-
-  
 
 </body>
 </html>

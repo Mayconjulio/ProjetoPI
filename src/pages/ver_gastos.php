@@ -1,23 +1,76 @@
 <?php
-
-/**
- * a que abaixo esta o código que faz com que baixe todos os dados salvos na tabela gastos
- * para o formato excel.
- */
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit();
 }
 
-if (isset($_POST['exportar_excel'])) {
-  $pdo = new PDO("mysql:host=localhost;dbname=sistema_login", "root", "");
-  
-  $user_id = $_SESSION['usuario_id'];
-  $stmt = $pdo->prepare("SELECT * FROM gastos WHERE user_id = ? ORDER BY data_gasto DESC, preco DESC");
-  $stmt->execute([$user_id]);
-  $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$user_id = $_SESSION['usuario_id'];
+$nome = $_SESSION['usuario_nome'];
 
+// Conexão PDO (corrigida - antes de usar $pdo)
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=sistema_login", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erro na conexão com PDO: " . $e->getMessage());
+}
+
+// Dados para gráficos e cálculo realizado/previsto
+$dados = $pdo->query("SELECT data_gasto, preco, categoria FROM gastos WHERE user_id = $user_id")->fetchAll(PDO::FETCH_ASSOC);
+
+$realizadoPorMes = [];
+foreach ($dados as $linha) {
+    $mes = date('m', strtotime($linha['data_gasto']));
+    $realizadoPorMes[$mes] = ($realizadoPorMes[$mes] ?? 0) + $linha['preco'];
+}
+
+$valoresPrevistos = array_fill_keys(['01','02','03','04','05','06','07','08','09','10','11','12'], 1000);
+
+$difMeses = [];
+for ($i = 1; $i <= 12; $i++) {
+    $mes = str_pad($i, 2, '0', STR_PAD_LEFT);
+    $real = $realizadoPorMes[$mes] ?? 0;
+    $prev = $valoresPrevistos[$mes];
+    $difMeses[] = $real - $prev;
+}
+
+$labelsMeses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+$dadosLucrosMensais = $pdo->query("
+    SELECT DATE_FORMAT(data_gasto, '%Y-%m') as mes, SUM(preco) as total 
+    FROM gastos 
+    WHERE user_id = $user_id AND tipo = 'lucro'
+    GROUP BY mes
+")->fetchAll(PDO::FETCH_KEY_PAIR);
+
+$dadosDividasMensais = $pdo->query("
+    SELECT DATE_FORMAT(data_gasto, '%Y-%m') as mes, SUM(preco) as total 
+    FROM gastos 
+    WHERE user_id = $user_id AND tipo = 'divida'
+    GROUP BY mes
+")->fetchAll(PDO::FETCH_KEY_PAIR);
+
+// Preenche meses vazios com zero
+foreach ($labelsMeses as $index => $mes) {
+    $mesAtual = date('Y') . '-' . str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+    $dadosLucrosMensais[$mesAtual] = $dadosLucrosMensais[$mesAtual] ?? 0;
+    $dadosDividasMensais[$mesAtual] = $dadosDividasMensais[$mesAtual] ?? 0;
+}
+
+// Ordena por mês
+ksort($dadosLucrosMensais);
+ksort($dadosDividasMensais);
+
+// Conversão para JavaScript
+$lucros = array_values($dadosLucrosMensais);
+$dividas = array_values($dadosDividasMensais);
+
+// Exportar Excel
+if (isset($_POST['exportar_excel'])) {
+    $stmt = $pdo->prepare("SELECT * FROM gastos WHERE user_id = ? ORDER BY data_gasto DESC, preco DESC");
+    $stmt->execute([$user_id]);
+    $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     header("Content-Type: application/vnd.ms-excel");
     header("Content-Disposition: attachment; filename=gastos.xls");
@@ -25,46 +78,28 @@ if (isset($_POST['exportar_excel'])) {
     header("Expires: 0");
 
     echo "<table border='1'>";
-    echo "<tr><th>ID user</th><th>Nome do Produto</th><th>Data</th><th>Preço (R$)</th><th>Categoria</th><th>descricao</th></tr>";
-
+    echo "<tr><th>ID user</th><th>Nome do Produto</th><th>Data</th><th>Preço (R$)</th><th>Categoria</th><th>Tipo</th><th>Descrição</th></tr>";
     foreach ($produtos as $produto) {
         echo "<tr>";
         echo "<td>{$produto['user_id']}</td>";
         echo "<td>" . htmlspecialchars($produto['Produto']) . "</td>";
-        echo "<td>{$produto['data_gasto']}</td>";
+        echo "<td>" . date('d/m/Y', strtotime($produto['data_gasto'])) . "</td>";
         echo "<td>{$produto['preco']}</td>";
         echo "<td>{$produto['categoria']}</td>";
+        echo "<td>{$produto['tipo']}</td>";
         echo "<td>{$produto['descricao']}</td>";
         echo "</tr>";
     }
-
     echo "</table>";
-    exit(); // IMPORTANTE: impede que o restante da página seja processado
-}
-?>
-
-<?php
-
-
-// Verificar se o usuário está logado
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: login.php?error=Por favor, faça o login primeiro.");
     exit();
 }
 
-// Conectar ao banco de dados
+// Conexão mysqli (para outras queries)
 $conn = new mysqli("localhost", "root", "", "sistema_login");
-
-// Verificar conexão
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Obter informações do usuário
-$user_id = $_SESSION['usuario_id'];
-$nome = $_SESSION['usuario_nome'];
-
-// Excluir gasto
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
     $stmt = $conn->prepare("DELETE FROM gastos WHERE id = ? AND user_id = ?");
@@ -77,94 +112,69 @@ if (isset($_GET['delete_id'])) {
     exit();
 }
 
-// Buscar gastos do usuário
 $sql = "SELECT * FROM gastos WHERE user_id = ? ORDER BY data_gasto DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$Produto = []; // <- Novo array
+$Produto = [];
 while ($row = $result->fetch_assoc()) {
     $Produto[] = $row;
 }
 
-    
-// Buscar dados para o dashboard (gastos por data)
-$dados_sql = "SELECT data_gasto, SUM(preco) AS total_gasto FROM gastos WHERE user_id = ? GROUP BY data_gasto ORDER BY data_gasto ASC";
-$dados_stmt = $conn->prepare($dados_sql);
-$dados_stmt->bind_param("i", $user_id);
-$dados_stmt->execute();
-$dados_result = $dados_stmt->get_result();
-$gastos;
-$datas = [];
-$valores = [];
+// Dados para gráficos
+$porData = [];
+$porMes = [];
+$porCategoria = [];
 
-foreach ($Produto as $row) {
-    $label = $row['Produto'] . ' (' . date('d/m/Y', strtotime($row['data_gasto'])) . ')';
-    $datas[] = $label;
-    $valores[] = $row['preco'];
+foreach ($dados as $linha) {
+    $data = date('d/m', strtotime($linha['data_gasto']));
+    $mes = date('Y-m', strtotime($linha['data_gasto']));
+    $cat = $linha['categoria'];
+    $preco = (float)$linha['preco'];
+
+    $porData[$data] = ($porData[$data] ?? 0) + $preco;
+    $porMes[$mes]['gasto'] = ($porMes[$mes]['gasto'] ?? 0) + ($preco < 0 ? $preco : 0);
+    $porMes[$mes]['lucro'] = ($porMes[$mes]['lucro'] ?? 0) + ($preco > 0 ? $preco : 0);
+    $porCategoria[$cat] = ($porCategoria[$cat] ?? 0) + $preco;
 }
 
-
-
-// Dados para o gráfico de pizza (categoria e soma dos preços)
-$sqlPizza = "SELECT categoria, SUM(preco) AS total FROM gastos WHERE user_id = ? GROUP BY categoria";
-$stmtPizza = $conn->prepare($sqlPizza);
-$stmtPizza->bind_param("i", $user_id);
-$stmtPizza->execute();
-$resultPizza = $stmtPizza->get_result();
-
-$categorias = [];
-$valoresCategoria = [];
-
-while ($row = $resultPizza->fetch_assoc()) {
-    $categorias[] = $row['categoria'];
-    $valoresCategoria[] = $row['total'];
-}
-
+$despesa = $pdo->query("SELECT SUM(preco) as total FROM gastos WHERE user_id = $user_id AND tipo = 'divida'")->fetch()['total'] ?? 0;
+$lucroTotal = $pdo->query("SELECT SUM(preco) as total FROM gastos WHERE user_id = $user_id AND tipo = 'lucro'")->fetch()['total'] ?? 0;
+$lucroLiquido = $lucroTotal - $despesa;
+$margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1) : 0;
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Histórico Financeiro</title>
   <link rel="stylesheet" href="../styles/pasta Dos CSS/ver_gastos.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 </head>
 <body>
 
-<!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
-        
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="adicionar_gasto.php">Novo Registro Financeiro</a></li>
-                    <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
-                    <li><a href="logout.php">Sair</a></li>
-                </ul>
-            </nav>
+<nav>
+  <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
+  <div>
+    <a href="adicionar_gasto.php">Novo Registro Financeiro</a>
+    <a href="pasta Dos HTML/paginaprincipal.html">Menu Principal</a>
+    <a href="logout.php">Sair</a>
+  </div>
+</nav>
 
-            <div class="login">
-            <a href="logout.php">Sair da conta</a>
-            </div>
-        </div>
-    </header>
+<form method="post">
+  <button type="submit" name="exportar_excel">Exportar para Excel</button>
+</form>
 
-    <span class="bem-vindo">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
-
-  
 <div class="table-container">
-  
+  <h3>Seu Histórico Financeiro</h3>
   <?php if (isset($_GET['success'])) echo "<p style='color: green;'>".htmlspecialchars($_GET['success'])."</p>"; ?>
   <?php if (isset($_GET['error'])) echo "<p style='color: red;'>".htmlspecialchars($_GET['error'])."</p>"; ?>
+
   <?php if ($result->num_rows > 0): ?>
     <table>
       <thead>
@@ -173,29 +183,26 @@ while ($row = $resultPizza->fetch_assoc()) {
           <th>Data</th>
           <th>Preço</th>
           <th>Categoria</th>
+          <th>Tipo</th>
           <th>Descrição</th>
           <th>Ações</th>
         </tr>
       </thead>
       <tbody>
-      <?php foreach ($Produto as $row): ?>
-<tr>
-  <td><?php echo htmlspecialchars($row['Produto']); ?></td>
-  <td><?php echo htmlspecialchars($row['data_gasto']); ?></td>
-  <td>R$ <?php echo number_format($row['preco'], 2, ',', '.'); ?></td>
-  <td><?php echo htmlspecialchars($row['categoria']); ?></td>
-  <td><?php echo htmlspecialchars($row['descricao']); ?></td>
-  <td>
-  <a class="botao-editar" href="editar_gasto.php?id=<?php echo $row['id']; ?>">
-    <i class="bi bi-pencil-fill"></i> Editar
-  </a>
-  <a class="botao-excluir" href="ver_gastos.php?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">
-    <i class="bi bi-trash-fill"></i> Excluir
-  </a>
-</td>
-
-</tr>
-<?php endforeach; ?>
+        <?php foreach ($Produto as $row): ?>
+          <tr>
+            <td><?= htmlspecialchars($row['Produto']) ?></td>
+            <td><?= date('d/m/Y', strtotime($row['data_gasto'])) ?></td>
+            <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
+            <td><?= htmlspecialchars($row['categoria']) ?></td>
+            <td><?= htmlspecialchars($row['tipo']) ?></td>
+            <td><?= htmlspecialchars($row['descricao']) ?></td>
+            <td>
+              <a href="editar_gasto.php?id=<?= $row['id'] ?>">Editar</a>
+              <a href="ver_gastos.php?delete_id=<?= $row['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">Excluir</a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   <?php else: ?>
@@ -203,124 +210,148 @@ while ($row = $resultPizza->fetch_assoc()) {
   <?php endif; ?>
 </div>
 
-<!-- Área de botões -->
-<div class="botoes-dashboard">
-  <!-- Botão Exportar Excel -->
-  <form method="post">
-    <button type="submit" name="exportar_excel" class="btn-dashboard">
-      <i class="bi bi-file-earmark-excel-fill"></i> Exportar para Excel
-    </button>
-  </form>
+<button class="btnn" onclick="mostrarDashboard()">📊 Mostrar Dashboard de Gastos</button>
 
-  <!-- Botão Mostrar Dashboard -->
-  <button class="btn-dashboard" onclick="mostrarDashboard()">
-    <i class="bi bi-graph-up-arrow"></i> Mostrar Dashboard de Gastos
-  </button>
-</div>
+<div id="dashboard" style="display: none;">
+  <div class="cards">
+    <div class="card">Total Despesas <h2>R$ <?= number_format($despesa, 2, ',', '.') ?></h2></div>
+    <div class="card">Total Lucros <h2>R$ <?= number_format($lucroTotal, 2, ',', '.') ?></h2></div>
+    <div class="card">Lucro Líquido <h2>R$ <?= number_format($lucroLiquido, 2, ',', '.') ?></h2></div>
+    <div class="card destaque">
+      <p>% Margem Lucro Líquido</p>
+      <h1><?= $margem ?>%</h1>
+      <span>Objetivo: 12,0%</span>
+    </div>
+  </div>
 
-<div id="dashboard">
-  <h3 style="text-align: center;">Gastos por Data e por Categoria</h3>
-  <div class="graficos-container">
-    <div class="grafico grafico-barras">
-      <canvas id="graficoGastos" width="300" height="300"></canvas>
-      <p class="grafico-legenda">📅 Gastos por Data</p>
+  <h2 style="text-align: center;">Gráficos Financeiros</h2>
+  <div class="linha-e-coluna">
+    <div class="grafico">
+      <h4>Lucros e Despesas Mensais</h4>
+      <canvas id="graficoColuna1" width="600" height="300"></canvas>
     </div>
-    <div class="grafico grafico-pizza">
-      <canvas id="graficoPizza" width="300" height="300"></canvas>
-      <p class="grafico-legenda">📊 Gastos por Categoria</p>
+
+    <div class="grafico">
+      <h4>Gastos por Dia</h4>
+      <canvas id="graficoColuna"></canvas>
     </div>
+  </div>
+ 
+    <div class="grafico" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <h4>Distribuição por Categoria (Pizza)</h4>
+      <canvas id="graficoCategoria" width="300" height="300"></canvas>
+  </div>
+
+  
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-  const datas = <?php echo json_encode($datas); ?>;
-  const valores = <?php echo json_encode($valores); ?>;
+const datas = <?= json_encode(array_map(fn($r) => $r['Produto'] . ' (' . date('d/m/Y', strtotime($r['data_gasto'])) . ')', $Produto)) ?>;
+const valores = <?= json_encode(array_map(fn($r) => $r['preco'], $Produto)) ?>;
 
-  const categorias = <?php echo json_encode($categorias); ?>;
-  const valoresCategoria = <?php echo json_encode($valoresCategoria); ?>;
+const labelsLinha = <?= json_encode(array_keys($porMes)) ?>;
+const dadosGastos = <?= json_encode(array_map(fn($m) => $m['gasto'], $porMes)) ?>;
+const dadosLucros = <?= json_encode(array_map(fn($m) => $m['lucro'], $porMes)) ?>;
 
-  let chartCriado = false;
-  let dashboardVisivel = false;
+const categorias = <?= json_encode(array_keys($porCategoria)) ?>;
+const valoresCategoria = <?= json_encode(array_values($porCategoria)) ?>;
 
-  function mostrarDashboard() {
-    const dash = document.getElementById('dashboard');
+let chartCriado = false;
+let dashboardVisivel = false;
 
-    if (dashboardVisivel) {
-      dash.style.display = 'none';
-      dashboardVisivel = false;
-    } else {
-      dash.style.display = 'block';
-      if (!chartCriado) {
-        // Gráfico de barras
-        const ctx = document.getElementById('graficoGastos').getContext('2d');
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: datas,
-            datasets: [{
-              label: 'Gastos (R$)',
-              data: valores,
-              backgroundColor: 'rgba(0, 25, 216, 0.8)',
-              borderColor: 'rgba(192, 57, 43, 1)',
-              borderWidth: 1,
-              borderRadius: 8,
-              hoverBackgroundColor: 'rgba(231, 76, 60, 1)'
-            }]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              y: {
+      
+
+      function mostrarDashboard() {
+  const dash = document.getElementById('dashboard');
+
+  if (dashboardVisivel) {
+    dash.style.display = 'none';
+    dashboardVisivel = false;
+  } else {
+    dash.style.display = 'block';
+
+     
+    if (!chartCriado) {
+      
+
+// Gráfico Realizado - Previsto
+const ctxMensais = document.getElementById('graficoColuna1').getContext('2d');
+new Chart(ctxMensais, {
+    type: 'bar',
+    data: {
+        labels: <?= json_encode($labelsMeses) ?>,
+        datasets: [
+            {
+                label: 'Lucros',
+                data: <?= json_encode($lucros) ?>,
+                backgroundColor: '#4caf50', // Verde para lucros
+                borderWidth: 1
+            },
+            {
+                label: 'Dívidas',
+                data: <?= json_encode($dividas) ?>,
+                backgroundColor: '#f44336', // Vermelho para dívidas
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
                 beginAtZero: true,
                 ticks: {
-                  callback: function(value) {
-                    return 'R$ ' + value.toFixed(2).replace('.', ',');
-                  }
+                    callback: function(value) {
+                        return 'R$ ' + value;
+                    }
                 }
-              }
             }
-          }
-        });
-
-        // Gráfico de pizza
-        const ctxPizza = document.getElementById('graficoPizza').getContext('2d');
-        new Chart(ctxPizza, {
-          type: 'pie',
-          data: {
-            labels: categorias,
-            datasets: [{
-              label: 'Gasto por Categoria',
-              data: valoresCategoria,
-              backgroundColor: [
-                '#2ecc71', '#3498db', '#f1c40f', '#e67e22', '#9b59b6', '#e74c3c'
-              ],
-              borderColor: '#fff',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'bottom',
-                labels: {
-                  color: '#2c3e50',
-                  font: { weight: 'bold' }
-                }
-              }
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Lucros e Dívidas Mensais'
             }
-          }
-        });
-
-        chartCriado = true;
-      }
-      dashboardVisivel = true;
+        }
     }
-  }
-</script>
+});
 
+
+      new Chart(document.getElementById('graficoColuna'), {
+        type: 'bar',
+        data: {
+          labels: datas,
+          datasets: [{
+            label: 'Gastos por Data',
+            backgroundColor: '#33ff33',
+            data: valores
+          }]
+        }
+      });
+
+      new Chart(document.getElementById('graficoCategoria'), {
+        type: 'pie',
+    data: {
+        labels: categorias,
+        datasets: [{
+            label: 'Por Categoria',
+            backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc949',
+                '#af7aa1', '#ff9da7', '#9c755f', '#bab0ab'],
+            data: valoresCategoria
+        }]
+    },
+    options: {
+        responsive: false, // Desabilita ajuste automático do tamanho
+        maintainAspectRatio: false // Permite manipular dimensões personalizadas
+    }
+});
+      chartCriado = true;
+    }
+    dashboardVisivel = true;
+  }
+}
+</script>
 
 </body>
 </html>
