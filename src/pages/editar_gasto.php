@@ -120,8 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <label for="tipo">Tipo:</label>
     <select name="tipo" id="tipo" required>
-        <option value="Lucro" <?php echo $Produto['tipo'] === 'Lucro' ? 'selected' : ''; ?>>Lucro</option>
-        <option value="Dívida" <?php echo $Produto['tipo'] === 'Dívida' ? 'selected' : ''; ?>>Dívida</option>
+        <option value="Lucro" <?php echo $Produto['Tipo'] === 'Lucro' ? 'selected' : ''; ?>>Lucro</option>
+        <option value="Dívida" <?php echo $Produto['Tipo'] === 'Dívida' ? 'selected' : ''; ?>>Dívida</option>
     </select>
 
     <label for="descricao">Descrição:</label>

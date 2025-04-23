@@ -152,30 +152,37 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
   <meta charset="UTF-8">
   <title>Histórico Financeiro</title>
   <link rel="stylesheet" href="../styles/pasta Dos CSS/ver_gastos.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
 </head>
 <body>
+<!-- Cabeçalho -->
+<header>
+        <div class="container">
+            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
+        
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="adicionar_gasto.php">Novo Registro Financeiro</a></li>
+                    <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
+                    <li><a href="logout.php">Sair</a></li>
+                </ul>
+            </nav>
 
-<nav>
-  <span>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
-  <div>
-    <a href="adicionar_gasto.php">Novo Registro Financeiro</a>
-    <a href="pasta Dos HTML/paginaprincipal.html">Menu Principal</a>
-    <a href="logout.php">Sair</a>
-  </div>
-</nav>
+            <div class="login">
+            <a href="logout.php">Sair da conta</a>
+            </div>
+        </div>
+    </header>
 
-<form method="post">
-  <button type="submit" name="exportar_excel">Exportar para Excel</button>
-</form>
+    <span class="bem-vindo">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
 
 <div class="table-container">
-  <h3>Seu Histórico Financeiro</h3>
+  
   <?php if (isset($_GET['success'])) echo "<p style='color: green;'>".htmlspecialchars($_GET['success'])."</p>"; ?>
   <?php if (isset($_GET['error'])) echo "<p style='color: red;'>".htmlspecialchars($_GET['error'])."</p>"; ?>
-
-  <?php if ($result->num_rows > 0): ?>
+   <?php if ($result->num_rows > 0): ?>
     <table>
       <thead>
         <tr>
@@ -198,9 +205,13 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
             <td><?= htmlspecialchars($row['Tipo']) ?></td>
             <td><?= htmlspecialchars($row['descricao']) ?></td>
             <td>
-              <a href="editar_gasto.php?id=<?= $row['id'] ?>">Editar</a>
-              <a href="ver_gastos.php?delete_id=<?= $row['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">Excluir</a>
-            </td>
+  <a class="botao-editar" href="editar_gasto.php?id=<?php echo $row['id']; ?>">
+    <i class="bi bi-pencil-fill"></i> Editar
+  </a>
+  <a class="botao-excluir" href="ver_gastos.php?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">
+    <i class="bi bi-trash-fill"></i> Excluir
+  </a>
+</td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -209,8 +220,22 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
     <p>Você ainda não adicionou nenhum gasto.</p>
   <?php endif; ?>
 </div>
+  <!------------------------->
 
-<button class="btnn" onclick="mostrarDashboard()">📊 Mostrar Dashboard de Gastos</button>
+<!-- Área de botões -->
+<div class="botoes-dashboard">
+  <!-- Botão Exportar Excel -->
+  <form method="post">
+    <button type="submit" name="exportar_excel" class="btn-dashboard">
+      <i class="bi bi-file-earmark-excel-fill"></i> Exportar para Excel
+    </button>
+  </form>
+
+  <!-- Botão Mostrar Dashboard -->
+  <button class="btn-dashboard" onclick="mostrarDashboard()">
+    <i class="bi bi-graph-up-arrow"></i> Mostrar Dashboard de Gastos
+  </button>
+</div>
 
 <div id="dashboard" style="display: none;">
   <div class="cards">
