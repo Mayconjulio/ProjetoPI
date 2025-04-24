@@ -160,7 +160,7 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
 <!-- Cabeçalho -->
 <header>
         <div class="container">
-            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
+            <img src="../../src/assets/Imagens do Site/Conteudo do site/Logo Branca.png" alt="logo do sistema" class="logo">
         
             <nav class="nav-links">
                 <ul>

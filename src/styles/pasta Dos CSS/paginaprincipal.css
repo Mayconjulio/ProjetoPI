@@ -98,12 +98,13 @@ header {
 
 /*Quadrado para colocar uma imagem*/
 
+.Conteudo{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
 .imagem-container {
-  width: 700px; /* Aumentado */
-  height: 300px; /* Aumentado */
-  background: linear-gradient(135deg, #1e3c72, #2a9fd6);
-  border: 2px solid white;
-  border-radius: 12px;
+
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -111,6 +112,9 @@ header {
 }
 
 .imagem-container img {
+  border: 5px solid; 
+  border-image: linear-gradient(135deg, #1e3c72, #2a9fd6) 1;
+  /* padding: 1rem;  */
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
@@ -128,10 +132,10 @@ o código todo começando do BODY, e ja são 00:35 e eu to morto de fome */
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
-  z-index: 9999; /* só pra garantir que fique acima */
+  z-index: 9999;
+  width: 20rem;
 }
 
-/* Chat fechado/aberto */
 .chatExpandido {
   width: 20rem;
   height: 0;
@@ -142,19 +146,27 @@ o código todo começando do BODY, e ja são 00:35 e eu to morto de fome */
   flex-direction: column;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 /* Cabeçalho fixo */
 .ChatIA {
   background-color: #142675;
   height: 5rem;
-  width: 20rem;
+  width: 5rem;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.5s ease; /* Transição para ocultar */
+}
+
+
+/* Quando o chat estiver aberto, escondemos a bolinha */
+.chatExpandido.aberto + .ChatIA {
+  display: none;
 }
 
 /* Estilo do botão */

@@ -1,9 +1,32 @@
 // Botão de expandir/recolher o chat
 const botao = document.querySelector(".AtivarDesativarChat");
 const expansao = document.querySelector(".chatExpandido");
+const chatWrapper = document.querySelector(".ChatWrapper");
+const chatIA = document.querySelector(".ChatIA");
+
+// Toggle de expandir/recolher o chat
 botao.addEventListener("click", () => {
-  expansao.style.height = expansao.style.height === "31rem" ? "0" : "31rem";
+  const estaAberto = expansao.style.height === "31rem";
+  
+  // Alterna entre abrir e fechar o chat
+  expansao.style.height = estaAberto ? "0" : "31rem";
+  
+  // Adiciona ou remove a classe 'aberto' para controlar a visibilidade da bolinha
+  if (!estaAberto) {
+    expansao.classList.add("aberto");
+  } else {
+    expansao.classList.remove("aberto");
+  }
 });
+
+// Fechar o chat ao clicar fora do wrapper
+document.addEventListener("click", (e) => {
+  if (!chatWrapper.contains(e.target)) {  // Verifica se o clique foi fora do chat
+    expansao.style.height = "0"; // Fecha o chat
+    expansao.classList.remove("aberto");  // Remove a classe que esconde a bolinha
+  }
+});
+
 
 // Chat: envio de mensagens
 const form = document.getElementById("chat-form");

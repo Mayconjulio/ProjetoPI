@@ -31,7 +31,7 @@ $nome = $stmt->fetchColumn() ?: "Usuário Desconhecido";
     <header>
       <div class="container">
         <img
-          src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png"
+          src="../../assets/Imagens do Site/Conteudo do site/Logo Branca.png"
           alt="logo do sistema"
           class="logo"
         />
@@ -67,22 +67,19 @@ $nome = $stmt->fetchColumn() ?: "Usuário Desconhecido";
       <p>Ao Futuro da sua <br><span id="p">Liberdade Financeira</span></p>
     </div>
 
+  <div class="Conteudo">
     <!-- Quadrado para colocar uma imagem -->
      
     <div class="imagem-container">
-  <img src="../../assets/Imagens do Site/Captura de tela 2025-04-14 092901.png" alt="Imagem exemplo" />
-</div>
-
-
-
+      <img src="../../assets/Imagens do Site/Captura de tela 2025-04-14 092901.png" alt="Imagem exemplo" />
+    </div>
   
-
     <!-- CHATBOT -->
-
+  
     <div class="ChatWrapper">
       <div class="chatExpandido">
         <div class="chat-box" id="chatbox"></div>
-
+  
         <form id="chat-form">
           <input
             type="text"
@@ -93,12 +90,14 @@ $nome = $stmt->fetchColumn() ?: "Usuário Desconhecido";
           <button type="submit">Enviar</button>
         </form>
       </div>
-
+  
       <div class="ChatIA">
-        <button class="AtivarDesativarChat">BotInvest</button>
+        <button class="AtivarDesativarChat"></button>
         <!-- botão de maximizar e minimizar o menu -->
       </div>
     </div>
+  </div>
+
 
     <script src="../../JS/FunçõesDoChatBot.js"></script>
   </body>

@@ -56,7 +56,7 @@ $conn->close();
     <!-- Cabeçalho -->
     <header>
         <div class="container">
-            <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
+            <img src="../src/assets/Imagens do Site/Conteudo do site/Logo Branca.png" alt="logo do sistema" class="logo">
         
             <nav class="nav-links">
                 <ul>
@@ -111,7 +111,7 @@ $conn->close();
             <div class="info-box">
                 <div class="image-box">
                     <!--tamanho da imagem 510 x 420 fica perfeita-->
-                    <img src="https://gartic.com.br/imgs/mural/ju/jungkook_ssi/aflito.png" alt="IA Assistente">
+                    <img src="../src/assets/Imagens do Site/Conteudo do site/IA ASSISTENTE E IA FINANCEIRA.jpg" alt="IA Assistente">
                 </div>
 
                 <div class="text-box">
