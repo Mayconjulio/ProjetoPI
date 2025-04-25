@@ -117,13 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <option value="Educação" <?php echo $Produto['categoria'] === 'Educação' ? 'selected' : ''; ?>>Educação</option>
         <option value="Outros" <?php echo $Produto['categoria'] === 'Outros' ? 'selected' : ''; ?>>Outros</option>
     </select>
-
+<br><br>
     <label for="tipo">Tipo:</label>
     <select name="tipo" id="tipo" required>
         <option value="Lucro" <?php echo $Produto['Tipo'] === 'Lucro' ? 'selected' : ''; ?>>Lucro</option>
         <option value="Dívida" <?php echo $Produto['Tipo'] === 'Dívida' ? 'selected' : ''; ?>>Dívida</option>
     </select>
-
+<br><br>
     <label for="descricao">Descrição:</label>
     <textarea name="descricao" id="descricao" rows="3"><?php echo htmlspecialchars($Produto['descricao']); ?></textarea>
 

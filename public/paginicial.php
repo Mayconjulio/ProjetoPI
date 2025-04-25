@@ -62,7 +62,7 @@ $conn->close();
                 <ul>
                     <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
                     <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
-                    <li><a href="../src/pages/pasta Dos HTML/sComocadastra.html">Como Se Registrar</a></li>
+                    <li><a href="../src/pages/cadastrar.php">Registrar</a></li>
                 </ul>
             </nav>
 
