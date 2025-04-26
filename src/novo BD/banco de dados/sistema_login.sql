@@ -57,6 +57,11 @@ CREATE TABLE `usuarios` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
+  `data_NSC` DATE NOT NULL,
+  `numero_telefone` varchar(15) NOT NULL,
+  `cidade` varchar(50) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `endereco` varchar(50) NOT NULL,
   `admin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
