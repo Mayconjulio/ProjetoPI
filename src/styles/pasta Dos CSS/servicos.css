@@ -1,269 +1,133 @@
-#hero {
-  background: #2c3e50;
-  color: #fff;
-  padding: 60px 0;
-  text-align: center;
-}
-
-#hero h2 {
-  font-size: 2.5em;
-}
-
-#hero p {
-  font-size: 1.2em;
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #e74c3c;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.cta-button:hover {
-  background: #c0392b;
-}
-
-#servicos {
-  padding: 50px 0;
-  text-align: center;
-}
-
-#servicos .services {
-  display: flex;
-  justify-content: space-around;
-}
-
-#servicos .service-item {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 30%;
-}
-
-#sobre {
-  background: #ecf0f1;
-  padding: 50px 0;
-  text-align: center;
-}
-
-#contato {
-  padding: 50px 0;
-  text-align: center;
-}
-
-#contato form {
-  max-width: 600px;
-  margin: auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#contato form label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-#contato form input,
-#contato form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#contato form button {
-  background: #2c3e50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#contato form button:hover {
-  background: #34495e;
-}
-
-footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 20px;
-}
-* {
+/* Impede qualquer rolagem horizontal no site */
+html,
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  background: #173261;
+  background: linear-gradient(90deg, rgba(23, 50, 97, 1) 0%, rgba(71, 172, 213, 1) 100%);
 }
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-image: linear-gradient(to right, #00c6ff, #0072ff);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  color: #333;
+
+/* Garante que nenhum elemento vaze pra fora da largura da tela */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/*
+Dica extra:
+Se você estiver usando margens negativas, width: 100vw,
+ ou position: absolute com valores de left/right exagerados em algum lugar,
+    isso pode causar o problema. A solução acima já previne,
+*/
+
+/*Estilização do reader*/
+header {
+  background: linear-gradient(
+    to right,
+    #0d1b2a,
+    #0099ff
+  ); /* azul escuro para azul mais vivo */
+  padding: 30px 0;
+  color: white;
 }
 
 .container {
-  width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
-}
-
-/* Cabeçalho */
-header {
-  background-color: #00509e;
-  color: #fff;
-  padding: 20px 0;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: 1px;
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
   gap: 20px;
 }
-
-header nav ul li {
-  display: inline;
+.container img {
 }
 
-header nav ul li a {
-  color: #fff;
+.logo {
+  max-height: 50px;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  font-family: "Atomic";
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-header nav ul li a:hover {
-  color: #e0e0e0;
-}
-
-/* Estilo da caixa central */
-.box {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 15px;
-  width: 30%;
-  text-align: center;
-  margin: 20px auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  color: #00509e;
-}
-
-.btn {
-  background-color: #0072ff;
   color: white;
-  padding: 15px 30px;
-  margin: 10px;
-  font-size: 18px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  font-size: 1.3rem; /* Aumentado o tamanho da fonte */
+  transition: color 0.3s;
 }
 
-.btn:hover {
-  background-color: #00509e;
+.nav-links a:hover {
+  color: #a0c4ff;
 }
 
-/* Estilo principal */
-main {
-  flex: 1;
-  padding: 20px 0;
+.login {
+  text-align: right;
 }
-
-/* Rodapé */
-footer {
-  background-color: #00509e;
-  color: #fff;
-  padding: 20px 0;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-footer p {
-  margin: 5px 0;
-}
-
-footer .social-icons {
-  display: flex;
-  align-items: center;
-}
-
-footer .social-icons a {
-  margin: 0 10px;
-  color: #fff;
+.login a {
   text-decoration: none;
-  font-size: 24px;
-  transition: color 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 1.3rem;
 }
 
-footer .social-icons a:hover {
-  color: #e0e0e0;
+.Titulo{
+  text-align: center;
+  color: white;
 }
 
-footer .whatsapp:hover {
-  color: #25d366; /* Cor do WhatsApp */
+form{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-footer .facebook:hover {
-  color: #3b5998; /* Cor do Facebook */
+form input{
+  background-color: rgba(255, 255, 255, 0);
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 3%;
+  padding: 1%;
+  height: 2.5rem;
+  width: 23rem;
+  outline: none;
+  margin-bottom: 2%;
 }
-
-/* Instagram com dropdown */
-.instagram-container {
-  position: relative;
+form label{
   display: inline-block;
+  margin-bottom: 2%;
+  color: #02d1e9;
 }
 
-.instagram-container .dropdown {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 40px;
-  background-color: #fff;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  border-radius: 5px;
+form .DadosPrincipais{
+
 }
 
-.instagram-container .dropdown a {
-  color: #333;
-  text-decoration: none;
-  display: block;
-  margin: 5px 0;
-  transition: color 0.3s ease;
+form .Mensagem textarea{
+  text-align: justify;
+  width: 100%;
+  padding: 1%;
+  height: 15rem;
+  width: 40rem;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0);
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 3%;
+  resize: none;
+  outline: none;
 }
 
-.instagram-container .dropdown a:hover {
-  color: #c13584; /* Cor do Instagram */
-}
-
-.instagram-container:hover .dropdown {
-  display: block;
-}
-
-.instagram-container:hover a.instagram {
-  color: #c13584; /* Cor do Instagram */
+button{
+ display: flex;
+ align-self: center;
+ justify-self: center;
 }
