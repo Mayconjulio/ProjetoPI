@@ -49,7 +49,7 @@ $nome = $stmt->fetchColumn() ?: "Usuário Desconhecido";
               </a>
             </li>
             <li>
-              <a href="../pasta Dos HTML/servicos.html" class="option"> Suporte </a>
+              <a href="../servicos.php" class="option"> Suporte </a>
             </li>
           </ul>
         </nav>

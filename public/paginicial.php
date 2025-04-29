@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografando a senha
 
     // Verifica se o email já está cadastrado

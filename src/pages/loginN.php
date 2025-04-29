@@ -53,7 +53,7 @@
           <a href="pasta%20Dos%20HTML/servicos.html">esqueceu a senha?</a>
         </div>
 
-        <a href="./pasta Dos HTML/sComocadastra.html" class="sem-conta">Não possui cadastro?</a>
+        <a href="cadastrar.php" class="sem-conta">Não possui cadastro?</a>
 
         <button type="submit" class="btn-cadastrar">CADASTRE-SE</button>
       </form>

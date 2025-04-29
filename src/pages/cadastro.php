@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $senha = $_POST['senha'];
     $data_NSC = trim($_POST['data_nascimento']);
-    $numero_telefone = trim($_POST['numero_telefone']);
+    $telefone = $_POST['telefone'];
     $cidade = trim($_POST['cidade']);
     $estado = trim($_POST['estado']);
     $endereco = trim($_POST['endereco']);
@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
     // Inserir o novo usuário usando prepared statements
-    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, data_NSC, numero_telefone, cidade, estado, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $nome, $email, $senha_hash, $data_NSC, $numero_telefone, $cidade, $estado, $endereco);
+    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, data_NSC, telefone, cidade, estado, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $nome, $email, $senha_hash, $data_NSC, $telefone, $cidade, $estado, $endereco);
 
     if ($stmt->execute()) {
         header("Location: cadastrar.php?success=Usuário cadastrado com sucesso! Faça o login.");
