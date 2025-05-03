@@ -511,3 +511,100 @@ h1 span {
 .footer > * {
   z-index: 2;
 }
+
+/*Expansividade */
+
+@media (max-width: 768px) {
+  .hero-section {
+  }
+  .hero-section h1 {
+    font-size: 35px;
+  }
+  .hero-section p {
+    font-size: 19px;
+  }
+  .hero-section .cta-buttonn {
+    font-size: 10px;
+  }
+
+  .dashboard-image {
+    margin-top: -20px;
+  }
+  .Paragrafo {
+    margin-top: -50px;
+    font-size: 10px;
+  }
+  .info-section {
+    margin-top: -60px;
+  }
+  .text-box h2 {
+    font-size: 31px;
+  }
+  .info-section .cta-button {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+  }
+  h1 {
+    font-size: 29px;
+  }
+  .card-container {
+    padding: 4px;
+  }
+  .card-container #feature-seguranca {
+    margin-top: -110px;
+  }
+  .card-container p {
+    font-size: 17px;
+  }
+  .card-container h2 {
+    font-size: 25px;
+  }
+  .section-container {
+    margin-top: -0.1px;
+  }
+  .section-container .subscribe-btn {
+    margin-left: 50px;
+    font-size: 25px;
+  }
+  .image-boxx {
+    margin-top: -20px;
+  }
+  .footer {
+    height: auto;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footer-logo,
+  .footer-links {
+    align-items: center;
+    text-align: center;
+  }
+
+  .descricao {
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-copy {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .footer::before,
+  .footer::after {
+    display: none; /* Remove os fundos decorativos para evitar bugs visuais em telas pequenas */
+  }
+}
