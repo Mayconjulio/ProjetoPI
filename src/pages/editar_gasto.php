@@ -69,31 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <div class="logo-wrapper">
-      <img src="../assets/Imagens do Site/svg finanças/finaças svg so o nome branco.svg" alt="logo do sistema" class="logo">
-    </div>
+<div id="navbar-container"></div>
 
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <nav class="nav-links" id="navLinks">
-      <ul>
-        <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
-        <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
-        <li><a href="logout.php">Sair</a></li>
-      </ul>
-    </nav>
-
-    <div class="login" id="loginBox">
-      <a href="logout.php"><button class="btn">Sair da conta</button></a>
-    </div>
-  </div>
-</header>
 
 <main class="main-content">
     <span class="bem-vindo"><?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>! Aqui, você pode modificar os dados conforme necessário.</span>
@@ -143,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     body.classList.toggle('menu-ativo');
   });
 </script>
+<script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>
 

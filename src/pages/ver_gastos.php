@@ -154,27 +154,12 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
   <link rel="stylesheet" href="../styles/pasta Dos CSS/ver_gastos.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+
 </head>
 <body>
-<!-- Cabeçalho -->
-<header>
-        <div class="container">
-            <img src="../../src/assets/Imagens do Site/Conteudo do site/Logo Branca.png" alt="logo do sistema" class="logo">
-        
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="adicionar_gasto.php">Novo Registro Financeiro</a></li>
-                    <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
-                    <li><a href="logout.php">Sair</a></li>
-                </ul>
-            </nav>
 
-            <div class="login">
-            <a href="logout.php">Sair da conta</a>
-            </div>
-        </div>
-    </header>
+    <!-- Cabeçalho -->
+    <div id="navbar-container"></div>
 
     <span class="bem-vindo">Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</span>
 
@@ -377,6 +362,6 @@ new Chart(ctxMensais, {
   }
 }
 </script>
-
+<script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>

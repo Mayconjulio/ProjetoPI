@@ -11,30 +11,8 @@
 <body>
     <div class="box">
     
-    <header>
-  <div class="container">
-    <img src="img/sua-logo.png" alt="Logo" class="logo" />
+    <div id="navbar-container"></div>
     
-    <nav class="nav-links">
-      <ul>
-        <li><a href="../../public/paginicial.php">Início</a></li>
-        <li><a href="../pages/pasta Dos HTML/servicos.html">Suporte</a></li>
-        <li><a href="../pages/pasta Dos HTML/sobre.html">Sobre</a></li>
-      </ul>
-    </nav>
-
-    <div class="login">
-      <a href="../pages/loginN.php">Login</a>
-    </div>
-
-    <!-- Botão hambúrguer -->
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</header>
 
 
 
@@ -116,6 +94,6 @@
 
 
 
-
+<script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>

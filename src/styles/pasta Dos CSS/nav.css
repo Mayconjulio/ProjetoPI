@@ -1,0 +1,249 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 90px !important; /* Compensa a navbar fixa */
+    position: relative;
+  }
+  
+  /* Navbar Principal */
+  nav {
+    background: linear-gradient(to right, #0d1b2a, #0099ff);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 50px;
+    transition: transform 0.3s;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Links Desktop */
+  .nav-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .nav-links ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+  
+  .guest-nav,
+  .logged-nav {
+    display: none; /* começa tudo invisível */
+  }
+  
+  body.logged-in .logged-nav {
+    display: flex;
+  }
+  
+  body:not(.logged-in) .guest-nav {
+    display: flex;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Atomic', sans-serif;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    padding: 5px 0;
+    position: relative;
+  }
+  
+  .nav-links a:hover {
+    color: #a0c4ff;
+  }
+  
+  .nav-links a.active {
+    color: #a0c4ff;
+    font-weight: bold;
+  }
+  
+  /* Botões Login/Logout */
+  .login {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .btn {
+    padding: 8px 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Atomic', sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  
+  /* Menu Mobile */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: all 0.3s;
+  }
+  
+  .hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: #0d1b2a;
+    padding: 80px 0 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  
+  .mobile-menu.active {
+    right: 0;
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+  }
+  
+  .mobile-menu a {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Atomic', sans-serif;
+    transition: all 0.3s;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .mobile-menu a:hover {
+    background: rgba(255,255,255,0.05);
+    padding-left: 30px;
+  }
+  
+  /* Overlay */
+  .mobile-menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: -1;
+  }
+  
+  .mobile-menu.active::before {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  /* Estilos para os botões mobile */
+  .mobile-login {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  .mobile-menu .btn {
+    display: block;
+    width: calc(100% - 50px);
+    margin: 20px 25px 0;
+    text-align: center;
+  }
+  
+  .mobile-login .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+  
+  /* Controle de Login */
+  .logged-link {
+    display: none;
+  }
+  
+  .guest-link {
+    display: block;
+  }
+  
+  body.logged-in .logged-link {
+    display: block;
+  }
+  
+  body.logged-in .guest-link {
+    display: none;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .nav-links, .login {
+      display: none;
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  }
+  

@@ -24,41 +24,13 @@ $nome = $stmt->fetchColumn() ?: "Usuário Desconhecido";
       rel="stylesheet"
       href="../../styles/pasta Dos CSS/paginaprincipal.css"
     />
+
   </head>
 
   <body>
     <!-- Cabeçalho -->
-    <header>
-      <div class="container">
-        <img
-          src="../../assets/Imagens do Site/Conteudo do site/Logo Branca.png"
-          alt="logo do sistema"
-          class="logo"
-        />
+    <div id="navbar-container"></div>
 
-        <nav class="nav-links">
-          <ul>
-            <li>
-              <a href="../ver_gastos.php" class="option">
-                Histórico Financeiro
-              </a>
-            </li>
-            <li>
-              <a href="../adicionar_gasto.php" class="option">
-                Novo Registro Financeiro
-              </a>
-            </li>
-            <li>
-              <a href="../servicos.php" class="option"> Suporte </a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="login">
-          <a href="../logout.php" class="option"> Sair da conta </a>
-        </div>
-      </div>
-    </header>
 
     <!-- Conteudo do Seja Bem-vindo-->
 
@@ -100,5 +72,6 @@ $nome = $stmt->fetchColumn() ?: "Usuário Desconhecido";
 
 
     <script src="../../JS/FunçõesDoChatBot.js"></script>
+    <script src="/projetopi/src/JS/nav.js"></script>
   </body>
 </html>

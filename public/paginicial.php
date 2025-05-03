@@ -50,28 +50,13 @@ $conn->close();
     <title>LM R. Finanças</title>
     <link rel="stylesheet" href="../src/styles/pasta Dos CSS/Paginicial.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    
+
 </head>
 <body>
 
     <!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <img src="../src/assets/Imagens do Site/Conteudo do site/Logo Branca.png" alt="logo do sistema" class="logo">
-        
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="../src/pages/pasta Dos HTML/sobre.html">Sobre</a></li>
-                    <li><a href="../src/pages/pasta Dos HTML/servicos.html">Serviços</a></li>
-                    <li><a href="../src/pages/cadastrar.php">Registrar</a></li>
-                </ul>
-            </nav>
-
-            <div class="login">
-                <a href="../src/pages/loginN.php"><button class="btn">Entra/Login</button></a>
-            </div>
-        </div>
-    </header>
+    <div id="navbar-container"></div>
+    
 
     <!-- Comteudo do futuro da sua liberdade.... -->
     <div class="hero-section">
@@ -229,6 +214,6 @@ $conn->close();
 </footer>
 
 
-
+<script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>

@@ -41,21 +41,8 @@ if (!$usuario) {
 </head>
 <body>
 
-<header>
-    <div class="container">
-      <img src="../../assets/Imagens do Site/Conteudo do site/Logo Branca.png" alt="logo do sistema" class="logo" />
-      <nav class="nav-links">
-        <ul>
-          <li><a href="pasta Dos HTML/paginaprincipal.php" class="option">Início</a></li>
-          <li><a href="ver_gastos.php" class="option">Histórico Financeiro</a></li>
-          <li><a href="adicionar_gasto.php" class="option">Novo Registro Financeiro</a></li>
-        </ul>
-      </nav>
-      <div class="login">
-        <a href="logout.php" class="option">Sair da conta</a>
-      </div>
-    </div>
-  </header>
+<div id="navbar-container"></div>
+
 
   <div class="Titulo">
     <h1>Fale conosco!</h1>
@@ -95,5 +82,6 @@ if (!$usuario) {
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script src="../JS/From.js"></script>  
+  <script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>

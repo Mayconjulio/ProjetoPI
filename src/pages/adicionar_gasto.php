@@ -67,27 +67,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Registro Financeiro</title>
   <link rel="stylesheet" href="../styles/pasta Dos CSS/adicionar_gasto.css">
+
 </head>
 <body>
 
 <!-- Cabeçalho -->
-<header>
-    <div class="container">
-        <img src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="logo do sistema" class="logo">
+<div id="navbar-container"></div>
 
-        <nav class="nav-links">
-            <ul>
-                <li><a href="ver_gastos.php">Histórico Financeiro</a></li>
-                <li><a href="pasta Dos HTML/paginaprincipal.php">Menu Principal</a></li>
-                <li><a href="logout.php">Sair</a></li>
-            </ul>
-        </nav>
-
-        <div class="login">
-            <a href="logout.php"><button class="btn">Sair da conta</button></a>
-        </div>
-    </div>
-</header>
 
 <span class="bem-vindo"><?php echo htmlspecialchars($nome); ?>, Este campo é destinado ao registro de suas informações.</span>
 
@@ -139,6 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <p id="p">Preste atenção na hora<br>de organizar seus<br>gastos!</p>
   </div>
 </div>
-
+<script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>
