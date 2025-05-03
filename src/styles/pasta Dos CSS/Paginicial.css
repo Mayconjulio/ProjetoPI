@@ -608,3 +608,34 @@ h1 span {
     display: none; /* Remove os fundos decorativos para evitar bugs visuais em telas pequenas */
   }
 }
+
+/*testando animação*/
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #0b0b2c, #3bc6f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#preloader img {
+  width: 600px; /* Tamanho aumentado para 300px de largura */
+  height: auto; /* Mantém a proporção da imagem */
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin: 0; /* Sem margem, deixando as imagens bem próximas */
+}
+
+#image1.mostrar {
+  opacity: 1;
+}
+
+#image2.mostrar {
+  opacity: 1;
+}

@@ -53,6 +53,11 @@ $conn->close();
     
 </head>
 <body>
+<div id="preloader">
+  <img id="image1" src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="Logo 1">
+  
+</div>
+
 
     <!-- Cabeçalho -->
     <header>
@@ -227,6 +232,22 @@ $conn->close();
 
   <p class="footer-copy">Desenvolvido por ByAvanced...</p>
 </footer>
+
+<script>
+  window.addEventListener("load", () => {
+    const image1 = document.getElementById("image1");
+    const preloader = document.getElementById("preloader");
+
+    // Mostrar a imagem e aplicar a animação
+    image1.classList.add("mostrar");
+
+    // Após 3 segundos, esconder o preloader e mostrar o site
+    setTimeout(() => {
+      preloader.style.opacity = '0';
+      setTimeout(() => preloader.style.display = 'none', 500);
+    }, 3000); // Duração ajustada para o tempo do preloader
+  });
+</script>
 
 
 
