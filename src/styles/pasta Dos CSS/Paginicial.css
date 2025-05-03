@@ -443,3 +443,237 @@ h1 span {
 .footer > * {
   z-index: 2;
 }
+
+/*testando animação*/
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #0b0b2c, #3bc6f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#preloader img {
+  width: 600px; /* Tamanho aumentado para 300px de largura */
+  height: auto; /* Mantém a proporção da imagem */
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin: 0; /* Sem margem, deixando as imagens bem próximas */
+}
+
+#image1.mostrar {
+  opacity: 1;
+}
+
+#image2.mostrar {
+  opacity: 1;
+}
+
+/*Expansividade */
+@media (min-width: 912px) and (max-width: 1024px) {
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* ou center, se quiser centralizar */
+    gap: 1rem; /* espaçamento entre os cards, opcional */
+    padding: 10px;
+  }
+
+  .feature-card {
+    flex: 1; /* ou defina uma largura fixa, como width: 45% */
+    min-width: 0; /* garante que não ultrapasse */
+  }
+  .footer::before,
+  .footer::after {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* ou center, se quiser centralizar */
+    gap: 1rem; /* espaçamento entre os cards, opcional */
+    padding: 10px;
+  }
+
+  .feature-card {
+    flex: 1; /* ou defina uma largura fixa, como width: 45% */
+    min-width: 0; /* garante que não ultrapasse */
+  }
+  .text-box p {
+    font-size: 20px;
+  }
+  .text-box .cta-button {
+    font-size: 30px;
+  }
+  .footer::before,
+  .footer::after {
+    display: none;
+  }
+
+  .footer {
+    padding: 2rem;
+    background-color: #f9f9f9; /* opcional, se quiser mais contraste */
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: nowrap;
+  }
+
+  .footer-logo,
+  .footer-links {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .footer-logo img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo .descricao {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .footer-social {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .footer-social a {
+    margin: 0 0.5rem;
+    font-size: 1.6rem;
+    color: #333;
+  }
+
+  .footer-links h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-copy {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+  }
+  .hero-section h1 {
+    font-size: 35px;
+  }
+  .hero-section p {
+    font-size: 19px;
+  }
+  .hero-section .cta-buttonn {
+    font-size: 10px;
+  }
+
+  .dashboard-image {
+    margin-top: -20px;
+  }
+  .Paragrafo {
+    margin-top: -50px;
+    font-size: 10px;
+  }
+  .info-section {
+    margin-top: -60px;
+  }
+  .text-box h2 {
+    font-size: 31px;
+  }
+  .info-section .cta-button {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+  }
+  h1 {
+    font-size: 29px;
+  }
+  .card-container {
+    padding: 4px;
+  }
+  .card-container #feature-seguranca {
+    margin-top: -110px;
+  }
+  .card-container p {
+    font-size: 17px;
+  }
+  .card-container h2 {
+    font-size: 25px;
+  }
+  .section-container {
+    margin-top: -0.1px;
+  }
+  .section-container .subscribe-btn {
+    margin-left: 50px;
+    font-size: 25px;
+  }
+  .image-boxx {
+    margin-top: -20px;
+  }
+  .footer {
+    height: auto;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .footer-logo,
+  .footer-links {
+    align-items: center;
+    text-align: center;
+  }
+
+  .descricao {
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-copy {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .footer::before,
+  .footer::after {
+    display: none; /* Remove os fundos decorativos para evitar bugs visuais em telas pequenas */
+  }
+}

@@ -53,6 +53,11 @@ $conn->close();
 
 </head>
 <body>
+<div id="preloader">
+  <img id="image1" src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="Logo 1">
+  
+</div>
+
 
     <!-- Cabeçalho -->
     <div id="navbar-container"></div>
@@ -78,7 +83,7 @@ $conn->close();
     <!-- agora vem a imagem deacordo com o pdf -->
     <!-- Imagem centralizada abaixo do conteúdo -->
   <div class="dashboard-image">
-    <img src="../src/assets/Imagens do Site/Captura de tela 2025-04-14 092901.png" alt="Dashboard Financeiro" />
+    <img src="../src/assets/Imagens do Site/print do ver os gastos.png" alt="Dashboard Financeiro" />
   </div>
 
     <div class="Paragrafo">
@@ -118,7 +123,7 @@ $conn->close();
             <div class="info-box reverse">
                 <div class="image-box">
                     <!--tamanho da imagem 510 x 420 fica perfeita-->
-                    <img src="https://gartic.com.br/imgs/mural/de/desenhista_maluca/coisas-aleatorias-2part-1.png" alt="Dashboard Gráfico">
+                    <img src="../src/assets/Imagens do Site/print dos graficor .png" alt="Dashboard Gráfico">
                 </div>
         
                 <div class="text-box">
@@ -150,7 +155,7 @@ $conn->close();
             <p>Controle seus gastos de forma eficiente e organizada</p>
         </div>
     </div>
-    <div class="feature-card">
+    <div class="feature-card" id="feature-seguranca">
         <i class="bi bi-shield-check"></i>
         <div>
             <h2>Segurança de dados</h2>
@@ -212,6 +217,22 @@ $conn->close();
 
   <p class="footer-copy">Desenvolvido por ByAvanced...</p>
 </footer>
+
+<script>
+  window.addEventListener("load", () => {
+    const image1 = document.getElementById("image1");
+    const preloader = document.getElementById("preloader");
+
+    // Mostrar a imagem e aplicar a animação
+    image1.classList.add("mostrar");
+
+    // Após 3 segundos, esconder o preloader e mostrar o site
+    setTimeout(() => {
+      preloader.style.opacity = '0';
+      setTimeout(() => preloader.style.display = 'none', 500);
+    }, 3000); // Duração ajustada para o tempo do preloader
+  });
+</script>
 
 
 <script src="/projetopi/src/JS/nav.js"></script>

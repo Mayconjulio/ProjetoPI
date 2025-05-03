@@ -42,13 +42,12 @@ Se você estiver usando margens negativas, width: 100vw,
 
 /*Quadrado para colocar uma imagem*/
 
-.Conteudo{
+.Conteudo {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
 
 .imagem-container {
-
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -56,7 +55,7 @@ Se você estiver usando margens negativas, width: 100vw,
 }
 
 .imagem-container img {
-  border: 5px solid; 
+  border: 5px solid;
   border-image: linear-gradient(135deg, #1e3c72, #2a9fd6) 1;
   /* padding: 1rem;  */
   max-width: 100%;
@@ -106,7 +105,6 @@ o código todo começando do BODY, e ja são 00:35 e eu to morto de fome */
   cursor: pointer;
   transition: opacity 0.5s ease; /* Transição para ocultar */
 }
-
 
 /* Quando o chat estiver aberto, escondemos a bolinha */
 .chatExpandido.aberto + .ChatIA {
@@ -180,3 +178,5 @@ button[type="submit"] {
   cursor: pointer;
   font-weight: bold;
 }
+
+/* expansividade */
