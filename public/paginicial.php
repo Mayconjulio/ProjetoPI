@@ -235,6 +235,6 @@ $conn->close();
 </script>
 
 
-<script src="/projetopi/src/JS/nav.js"></script>
+<script src="/TESTEPROJETO/src/JS/nav.js"></script>
 </body>
 </html>
