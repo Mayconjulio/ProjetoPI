@@ -69,7 +69,7 @@ $conn->close();
             O Futuro da sua<br>
             Liberdade <span class="highlight">Financeira</span>
         </h1>
-        <h2 style="color: pink;">ae dentro</h2>
+        
         <p>
             Organize suas finanças com
             <strong>inteligência e<br>eficiência</strong>
