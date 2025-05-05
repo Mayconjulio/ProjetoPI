@@ -75,7 +75,7 @@ body {
 }
 
 .senha-link a {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: white;
   text-decoration: none;
   padding-left: 25px;
@@ -83,7 +83,7 @@ body {
 
 .sem-conta {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.81rem;
   color: #00c8ff;
   text-decoration: none;
   margin-bottom: 0.5rem;
@@ -111,4 +111,71 @@ body {
 
 .btn-cadastrar:hover {
   background-color: #cce7ff;
+}
+@media (max-width: 767px) {
+  .slogan {
+    font-size: 1.2rem;
+  }
+  .senha-link a {
+    font-size: 0.81rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .logo {
+    width: 80%;
+  }
+  .slogan {
+    font-size: 1.35rem;
+  }
+  .slogan span {
+    font-size: 1.35rem;
+  }
+  .login-form label {
+    font-size: 1.61rem;
+  }
+  .login-form input {
+    font-size: 1.61rem;
+  }
+  .senha-link {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Define duas colunas de tamanho igual */
+    gap: 20px; /* Espaço entre os itens */
+  }
+  .senha-link a {
+    padding: 6px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .sem-conta {
+    font-size: 1.21rem;
+  }
+  .btn-cadastrar {
+    font-size: 1.21rem;
+  }
+}
+@media (max-width: 374px) {
+  .slogan {
+    font-size: 1.1rem;
+  }
+  .senha-link {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Define duas colunas de tamanho igual */
+    gap: 20px; /* Espaço entre os itens */
+  }
+  .senha-link a {
+    padding: 6px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .sem-conta {
+    font-size: 1.21rem;
+    text-align: center;
+  }
+  .btn-cadastrar {
+    font-size: 1.1rem;
+    display: flex;
+
+    width: 155px;
+  }
 }

@@ -53,8 +53,8 @@
        <input type="date" name="data_nascimento" class="inputUser" required>
        </div>
        <div class="inputBox">
-       <label for="telefone">Telefone</label>
-       <input type="text" name="telefone" id="telefone" required>
+       <input type="text" name="telefone" id="telefone" class="inputUser" required>
+       <label for="telefone" class="labelInput">Telefone</label>
        </div>
        <div class="inputBox">
        <input type="text" name="cidade" class="inputUser" required>
