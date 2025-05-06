@@ -150,6 +150,7 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Histórico Financeiro</title>
   <link rel="stylesheet" href="../styles/pasta Dos CSS/ver_gastos.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -181,25 +182,29 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($Produto as $row): ?>
-          <tr>
-            <td><?= htmlspecialchars($row['Produto']) ?></td>
-            <td><?= date('d/m/Y', strtotime($row['data_gasto'])) ?></td>
-            <td>R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
-            <td><?= htmlspecialchars($row['categoria']) ?></td>
-            <td><?= htmlspecialchars($row['Tipo']) ?></td>
-            <td><?= htmlspecialchars($row['descricao']) ?></td>
-            <td>
-  <a class="botao-editar" href="editar_gasto.php?id=<?php echo $row['id']; ?>">
-    <i class="bi bi-pencil-fill"></i> Editar
-  </a>
-  <a class="botao-excluir" href="ver_gastos.php?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">
-    <i class="bi bi-trash-fill"></i> Excluir
-  </a>
-</td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
+    <?php foreach ($Produto as $row): ?>
+        <tr>
+            <td data-label="Produto"><?= htmlspecialchars($row['Produto']) ?></td>
+            <td data-label="Data"><?= date('d/m/Y', strtotime($row['data_gasto'])) ?></td>
+            <td data-label="Preço">R$ <?= number_format($row['preco'], 2, ',', '.') ?></td>
+            <td data-label="Categoria"><?= htmlspecialchars($row['categoria']) ?></td>
+            <td data-label="Tipo"><?= htmlspecialchars($row['Tipo']) ?></td>
+            <td data-label="Descrição">
+                <p class="descricao">
+                    <?= htmlspecialchars($row['descricao']) ?>
+                </p>
+            </td>
+            <td data-label="Ações">
+                <a class="botao-editar" href="editar_gasto.php?id=<?php echo $row['id']; ?>">
+                    <i class="bi bi-pencil-fill"></i> Editar
+                </a>
+                <a class="botao-excluir" href="ver_gastos.php?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este gasto?');">
+                    <i class="bi bi-trash-fill"></i> Excluir
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</tbody>
     </table>
   <?php else: ?>
     <p>Você ainda não adicionou nenhum gasto.</p>
@@ -237,19 +242,17 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
   <h2 style="text-align: center;">Gráficos Financeiros</h2>
   <div class="linha-e-coluna">
     <div class="grafico">
-      <h4>Lucros e Despesas Mensais</h4>
-      <canvas id="graficoColuna1" width="600" height="300"></canvas>
+      <canvas id="graficoColuna1" width="800" height="600"></canvas>
+     
     </div>
 
     <div class="grafico">
-      <h4>Gastos por Dia</h4>
-      <canvas id="graficoColuna"></canvas>
+      <canvas id="graficoColuna" width="800" height="600"></canvas>
     </div>
   </div>
  
-    <div class="grafico" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-      <h4>Distribuição por Categoria (Pizza)</h4>
-      <canvas id="graficoCategoria" width="300" height="300"></canvas>
+    <div class="grafico" width="300" height="300" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <canvas id="graficoCategoria" ></canvas>
   </div>
 
   
@@ -352,9 +355,10 @@ new Chart(ctxMensais, {
         }]
     },
     options: {
-        responsive: false, // Desabilita ajuste automático do tamanho
-        maintainAspectRatio: false // Permite manipular dimensões personalizadas
+    responsive: true,
+    maintainAspectRatio: false,
     }
+
 });
       chartCriado = true;
     }
@@ -362,6 +366,42 @@ new Chart(ctxMensais, {
   }
 }
 </script>
+
+<script>
+  document.querySelectorAll('.descricao').forEach(function (el) {
+    const textoCompleto = el.textContent.trim();
+    const limite = 30;
+
+    if (textoCompleto.length > limite) {
+      const visivel = textoCompleto.slice(0, limite);
+      const oculto = textoCompleto.slice(limite);
+
+      el.innerHTML = `
+        ${visivel}<span class="pontos">...</span>
+        <span class="mais-texto" style="display: none;">${oculto}</span>
+        <span class="toggle-mais" style="color: #007bff; cursor: pointer;"> ler mais</span>
+      `;
+
+      el.querySelector('.toggle-mais').addEventListener('click', function () {
+        const maisTexto = el.querySelector('.mais-texto');
+        const pontos = el.querySelector('.pontos');
+
+        if (maisTexto.style.display === 'none') {
+          maisTexto.style.display = 'inline';
+          pontos.style.display = 'none';
+          this.textContent = ' ler menos';
+        } else {
+          maisTexto.style.display = 'none';
+          pontos.style.display = 'inline';
+          this.textContent = ' ler mais';
+        }
+      });
+    }
+  });
+</script>
+
+
+
 <script src="/projetopi/src/JS/nav.js"></script>
 </body>
 </html>
