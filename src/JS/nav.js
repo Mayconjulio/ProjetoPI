@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll('.logged-link').forEach(el => {
             el.style.display = isLoggedPage ? 'block' : 'none';
         });
-        
+
         document.querySelectorAll('.guest-link').forEach(el => {
             el.style.display = isLoggedPage ? 'none' : 'block';
         });
