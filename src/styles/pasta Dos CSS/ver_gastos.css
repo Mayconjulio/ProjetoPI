@@ -374,18 +374,6 @@ p {
   padding: 0 10px; /* Adiciona um pequeno padding lateral */
 }
 
-.grafico {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  flex: 1;
-  min-width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-}
 
 #graficoCategoria {
   max-width: 300px; /* Limita a largura máxima */

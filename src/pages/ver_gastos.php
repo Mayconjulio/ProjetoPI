@@ -251,9 +251,10 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
     </div>
   </div>
  
-    <div class="grafico" width="300" height="300" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-      <canvas id="graficoCategoria" ></canvas>
+    <div class="grafico" style="width: 2000px; height: 400px; display: flex; justify-content: center; align-items: center;">
+    <canvas id="graficoCategoria"></canvas>
   </div>
+
 
   
   </div>
@@ -355,7 +356,7 @@ new Chart(ctxMensais, {
         }]
     },
     options: {
-    responsive: true,
+    responsive: false,
     maintainAspectRatio: false,
     }
 
@@ -370,7 +371,7 @@ new Chart(ctxMensais, {
 <script>
   document.querySelectorAll('.descricao').forEach(function (el) {
     const textoCompleto = el.textContent.trim();
-    const limite = 30;
+    const limite = 0;
 
     if (textoCompleto.length > limite) {
       const visivel = textoCompleto.slice(0, limite);
