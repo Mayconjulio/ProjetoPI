@@ -155,6 +155,99 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
   <link rel="stylesheet" href="../styles/pasta Dos CSS/ver_gastos.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* força scroll em telas pequenas */
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #007BFF;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    table {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    table {
+      font-size: 13px;
+    }
+
+    .botao-editar, .botao-excluir {
+      display: block;
+      width: 100%;
+      margin: 4px 0;
+      text-align: center;
+    }
+  }
+
+  
+.botao-editar,
+.botao-excluir {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 2px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  white-space: nowrap; /* Impede quebra de linha */
+}
+
+.botao-editar {
+  background-color:#28a745; /* Azul claro */
+}
+
+.botao-excluir {
+  background-color: #dc3545; /* Vermelho */
+}
+
+.botao-editar i,
+.botao-excluir i {
+  margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+  .botao-editar,
+  .botao-excluir {
+    font-size: 13px;
+    display: inline-block;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .botao-editar,
+  .botao-excluir {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+}
+
+</style>
 
 </head>
 <body>
@@ -169,19 +262,20 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
   <?php if (isset($_GET['success'])) echo "<p style='color: green;'>".htmlspecialchars($_GET['success'])."</p>"; ?>
   <?php if (isset($_GET['error'])) echo "<p style='color: red;'>".htmlspecialchars($_GET['error'])."</p>"; ?>
    <?php if ($result->num_rows > 0): ?>
-    <table>
-      <thead>
-        <tr>
-          <th>Nome do Produto</th>
-          <th>Data</th>
-          <th>Preço</th>
-          <th>Categoria</th>
-          <th>Tipo</th>
-          <th>Descrição</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome do Produto</th>
+        <th>Data</th>
+        <th>Preço</th>
+        <th>Categoria</th>
+        <th>Tipo</th>
+        <th>Descrição</th>
+        <th style="min-width: 150px;">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
     <?php foreach ($Produto as $row): ?>
         <tr>
             <td data-label="Produto"><?= htmlspecialchars($row['Produto']) ?></td>
@@ -209,6 +303,7 @@ $margem = $lucroTotal > 0 ? number_format(($lucroLiquido / $lucroTotal) * 100, 1
   <?php else: ?>
     <p>Você ainda não adicionou nenhum gasto.</p>
   <?php endif; ?>
+</div>
 </div>
   <!------------------------->
 
@@ -371,7 +466,7 @@ new Chart(ctxMensais, {
 <script>
   document.querySelectorAll('.descricao').forEach(function (el) {
     const textoCompleto = el.textContent.trim();
-    const limite = 0;
+    const limite = 30;
 
     if (textoCompleto.length > limite) {
       const visivel = textoCompleto.slice(0, limite);

@@ -110,83 +110,103 @@ header {
 }
 
 /* Estilização da tabela abaixo!!*/
-
+/* Estilo base */
 .table-container {
-  margin: 20px auto;
-  background: white;
-  text-align: center;
-  font-weight: bolder;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: calc(100% - 20px); /* reduzindo 10px de cada lado */
-  max-width: 1200px; /* mantém limite máximo */
+  overflow-x: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-top: 20px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 800px;
 }
 
-thead {
-  background: linear-gradient(to right, #0b0b46, #4db8e4);
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-thead th {
-  color: rgb(255, 255, 255);
-  padding: 12px;
-  background: transparent; /* Impede que o fundo do <th> sobreponha o gradiente do <thead> */
+th {
+  background-color: #007BFF;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.tabela-gastos td {
-  padding: 12px;
-  border-top: 1px solid #ddd;
-}
-
-p {
-  color: #888;
-}
-
-.botao-editar,
-.botao-excluir {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s;
+.botao-editar, .botao-excluir {
+  padding: 6px 12px;
+  margin: 2px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.9em;
 }
 
 .botao-editar {
-  background-color: #16a34a; /* verde */
+  background-color: #28a745;
   color: white;
-}
-
-.botao-editar:hover {
-  background-color: #15803d;
-  transform: scale(1.05);
+  text-decoration: none;
 }
 
 .botao-excluir {
-  background-color: #dc2626; /* vermelho */
+  background-color: #dc3545;
   color: white;
-  margin-left: 12px;
+  text-decoration: none;
 }
 
-.botao-excluir:hover {
-  background-color: #b91c1c;
-  transform: scale(1.05);
+/* Responsivo até 768px */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  .botao-editar, .botao-excluir {
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
 }
 
-.botao-editar i,
-.botao-excluir i {
-  font-size: 1rem;
+/* Responsivo até 480px */
+@media (max-width: 480px) {
+  th, td {
+    padding: 10px 8px;
+  }
+
+  .botao-editar, .botao-excluir {
+    display: block;
+    width: 100%;
+    margin: 4px 0;
+    text-align: center;
+  }
+
+  td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    display: block;
+    color: #333;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table, tbody, tr, td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    margin-bottom: 16px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+  }
 }
+
 
 /* Estilização dos botão para baixar Exel e de mostrar o dashboard*/
 
