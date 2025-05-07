@@ -53,10 +53,10 @@ $conn->close();
 
 </head>
 <body>
-<div id="preloader">
+<!-- <div id="preloader">
   <img id="image1" src="../src/assets/Imagens do Site/Padrão vertical - ByAvanced (1).png" alt="Logo 1">
   
-</div>
+</div> -->
 
 
     <!-- Cabeçalho -->
@@ -186,7 +186,7 @@ $conn->close();
     <footer class="footer">
         <div class="footer-top">
             <div class="footer-logo">
-            <img src="../src/assets/Imagens do Site/Pad" alt="Logo Auctus" />
+            <img src="/ProjetoPI/src/assets/Imagens%20do%20Site/Conteudo%20do%20site/Logo%20Azul.png" alt="Logo Auctus" />
             <p class="descricao">
                 <strong>Auctus</strong> vem do Latim <strong>“crescimento”</strong> é uma sistema<br>
                 de <strong>controle financeiro</strong>, com <strong>navegação fácil e sem<br>complicações</strong>
